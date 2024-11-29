@@ -1,11 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://bg1rwfvcw5qsq"]
 
-[ext_resource type="PackedScene" uid="uid://ck7pyamg5fqge" path="res://assets/models/tv.gltf" id="1_wdj16"]
+[ext_resource type="PackedScene" uid="uid://dr1a8p0agrvyy" path="res://assets/models/tv.gltf" id="1_wdj16"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qj1eb"]
 size = Vector3(0.747559, 0.56543, 0.497559)
 
 [node name="StaticBody3D" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 
 [node name="tv" parent="." instance=ExtResource("1_wdj16")]
 
