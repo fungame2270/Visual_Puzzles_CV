@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://crldwarg4bk7o"]
+
+[ext_resource type="PackedScene" uid="uid://dpys1nsf1saos" path="res://scenes/character.tscn" id="1_s1m4l"]
+[ext_resource type="PackedScene" uid="uid://bg1rwfvcw5qsq" path="res://scenes/tv.tscn" id="2_w0wtq"]
+
+[sub_resource type="Environment" id="Environment_a85b6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6wcfw"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aleuf"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wjkof"]
+material = SubResource("StandardMaterial3D_aleuf")
+size = Vector3(20, 1, 20)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_cto3g"]
+viewport_path = NodePath("OutsideViewport")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_a85b6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+shape = SubResource("BoxShape3D_6wcfw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("BoxMesh_wjkof")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_s1m4l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.370418, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
+
+[node name="OutsideViewport" type="SubViewport" parent="."]
+size = Vector2i(1920, 1080)
+
+[node name="Camera3D" type="Camera3D" parent="OutsideViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.660206, 11.5648)
+
+[node name="tv" parent="." instance=ExtResource("2_w0wtq")]
+transform = Transform3D(-4, 0, -6.03983e-07, 0, 4, 0, 6.03983e-07, 0, -4, 0, 0, -6.37592)
+
+[node name="Sprite3D" type="Sprite3D" parent="tv"]
+transform = Transform3D(0.0328247, 0, 2.22045e-16, 0, 0.0417037, 0, -4.44089e-16, 0, 0.0234161, 2.21439e-08, 0.240632, -0.253297)
+texture = SubResource("ViewportTexture_cto3g")
