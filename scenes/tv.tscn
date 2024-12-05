@@ -1,15 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://bg1rwfvcw5qsq"]
+[gd_scene load_steps=4 format=3 uid="uid://bg1rwfvcw5qsq"]
 
 [ext_resource type="PackedScene" uid="uid://dr1a8p0agrvyy" path="res://assets/models/tv.gltf" id="1_wdj16"]
+[ext_resource type="PackedScene" uid="uid://c4vpdv5qv0rd4" path="res://assets/models/roundTable.gltf" id="2_6857a"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_qj1eb"]
-size = Vector3(0.747559, 0.56543, 0.497559)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ck2iq"]
+radius = 0.770091
 
 [node name="StaticBody3D" type="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 
 [node name="tv" parent="." instance=ExtResource("1_wdj16")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0557, 0.0648863)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00268555, 0.25173, -0.0227051)
-shape = SubResource("BoxShape3D_qj1eb")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0308837, 0.797628, 0.00216666)
+shape = SubResource("CylinderShape3D_ck2iq")
+
+[node name="blockbench_export" parent="." instance=ExtResource("2_6857a")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
