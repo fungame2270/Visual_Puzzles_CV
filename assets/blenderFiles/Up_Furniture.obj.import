@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dh1l4a4fhlrl8"
+path="res://.godot/imported/Up_Furniture.obj-ad3d7cd6add358b04488c1d57baef3cf.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Up_Furniture.obj-ad3d7cd6add358b04488c1d57baef3cf.mesh"]
+
+source_file="res://assets/blenderFiles/Up_Furniture.obj"
+dest_files=["res://.godot/imported/Up_Furniture.obj-ad3d7cd6add358b04488c1d57baef3cf.mesh", "res://.godot/imported/Up_Furniture.obj-ad3d7cd6add358b04488c1d57baef3cf.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
