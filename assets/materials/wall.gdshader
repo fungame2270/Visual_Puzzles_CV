@@ -10,6 +10,6 @@ void fragment() {
         // Inside of the mesh (opaque)
         ALPHA = 1.0; // Fully opaque
     }
-    
+
     ALBEDO = vec3(0.8, 0.2, 0.2); // Example color for inside
 }
