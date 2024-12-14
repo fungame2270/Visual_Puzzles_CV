@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://squ127hypcnc"]
 
-[ext_resource type="Texture2D" uid="uid://b6rwowkbj6fra" path="res://assets/models/wood.png" id="1_ghdop"]
+[ext_resource type="Texture2D" uid="uid://b6rwowkbj6fra" path="res://assets/textures/wood.png" id="1_ghdop"]
 
 [sub_resource type="Image" id="Image_ag05i"]
 data = {
@@ -13,7 +13,11 @@ data = {
 
 [sub_resource type="ImageTexture" id="ImageTexture_n8wg1"]
 resource_name = "0"
+<<<<<<< HEAD
 image = SubResource("Image_ag05i")
+=======
+image = SubResource("Image_ww850")
+>>>>>>> fcad9a04c4f48140f72857229e9d0db07c5cf645
 
 [resource]
 resource_name = "material_0"

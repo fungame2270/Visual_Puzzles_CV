@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp1im0ul3ptkw"
-path.s3tc="res://.godot/imported/Bottom_furniture_0.png-3a93900ecf36cf0a7c2de36b5ae2c94d.s3tc.ctex"
+uid="uid://dlc5lfw3gcomb"
+path.s3tc="res://.godot/imported/Up_Furniture_0.png-9b9c1f01457cb126f27aea74d95c32f9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "1eaa33a55066432978efac0312b431ea"
+"md5": "9db53a5cea7559a4abc2001cc9e8f84c"
 }
 
 [deps]
 
-source_file="res://assets/models/Bottom_furniture_0.png"
-dest_files=["res://.godot/imported/Bottom_furniture_0.png-3a93900ecf36cf0a7c2de36b5ae2c94d.s3tc.ctex"]
+source_file="res://assets/textures/Up_Furniture_0.png"
+dest_files=["res://.godot/imported/Up_Furniture_0.png-9b9c1f01457cb126f27aea74d95c32f9.s3tc.ctex"]
 
 [params]
 
