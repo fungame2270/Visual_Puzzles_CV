@@ -1,20 +1,32 @@
-[gd_scene load_steps=10 format=3 uid="uid://crldwarg4bk7o"]
+[gd_scene load_steps=14 format=3 uid="uid://crldwarg4bk7o"]
 
+[ext_resource type="Shader" path="res://assets/materials/wall.gdshader" id="1_rhuc1"]
 [ext_resource type="PackedScene" uid="uid://dpys1nsf1saos" path="res://scenes/character.tscn" id="1_s1m4l"]
 [ext_resource type="PackedScene" uid="uid://bg1rwfvcw5qsq" path="res://scenes/tv.tscn" id="2_w0wtq"]
 [ext_resource type="Script" path="res://scripts/tv.gd" id="3_1lkmw"]
-[ext_resource type="PackedScene" uid="uid://kpcg3faviiuj" path="res://assets/models/Bottom_furniture.gltf" id="4_f54eq"]
+[ext_resource type="PackedScene" uid="uid://0yakeunjcqo7" path="res://assets/models/Bottom_furniture.gltf" id="4_vrqn4"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_dwqcc"]
+
+[sub_resource type="Sky" id="Sky_f55yb"]
+sky_material = SubResource("PhysicalSkyMaterial_dwqcc")
 
 [sub_resource type="Environment" id="Environment_a85b6"]
+sky = SubResource("Sky_f55yb")
+ambient_light_source = 3
+ambient_light_color = Color(0.6, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6wcfw"]
 size = Vector3(20, 1, 20)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aleuf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nhq7s"]
+render_priority = 0
+shader = ExtResource("1_rhuc1")
 
-[sub_resource type="BoxMesh" id="BoxMesh_wjkof"]
-material = SubResource("StandardMaterial3D_aleuf")
-size = Vector3(20, 1, 20)
+[sub_resource type="BoxMesh" id="BoxMesh_k1ahj"]
+material = SubResource("ShaderMaterial_nhq7s")
+
+[sub_resource type="PrismMesh" id="PrismMesh_6v6eo"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_cto3g"]
 viewport_path = NodePath("OutsideViewport")
@@ -25,20 +37,24 @@ viewport_path = NodePath("OutsideViewport")
 environment = SubResource("Environment_a85b6")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.94512, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.033, 0)
 shape = SubResource("BoxShape3D_6wcfw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-mesh = SubResource("BoxMesh_wjkof")
+transform = Transform3D(12.0169, 0, 0, 0, 8.39821, 0, 0, 0, 17.6464, 0.023983, -1.07121, -0.0331869)
+mesh = SubResource("BoxMesh_k1ahj")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_s1m4l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.370418, 3.22836)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
+transform = Transform3D(1, 0, 0, 0, -0.683338, 0.730103, 0, -0.730103, -0.683338, -0.625378, 4.95426, -2.52714)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DirectionalLight3D"]
+mesh = SubResource("PrismMesh_6v6eo")
 
 [node name="OutsideViewport" type="SubViewport" parent="."]
 size = Vector2i(1920, 1080)
@@ -54,5 +70,5 @@ transform = Transform3D(0.0328247, 0, 2.22045e-16, 0, 0.0417037, 0, -4.44089e-16
 flip_h = true
 texture = SubResource("ViewportTexture_cto3g")
 
-[node name="blockbench_export" parent="." instance=ExtResource("4_f54eq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.37553, -0.409554, 3.58854)
+[node name="blockbench_export" parent="." instance=ExtResource("4_vrqn4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.44407, -0.5, 1.9749)

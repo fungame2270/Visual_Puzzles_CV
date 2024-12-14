@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://in6eo7t1evyn"
-path.s3tc="res://.godot/imported/bottomMovelBlender_Image_0.png-2d50d95fa3dc2ab8ce165e44500dcd15.s3tc.ctex"
+uid="uid://b6rwowkbj6fra"
+path.s3tc="res://.godot/imported/wood.png-0cadb071daee779b2ad5994862e98c72.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "1eaa33a55066432978efac0312b431ea"
-}
 
 [deps]
 
-source_file="res://assets/models/bottomMovelBlender_Image_0.png"
-dest_files=["res://.godot/imported/bottomMovelBlender_Image_0.png-2d50d95fa3dc2ab8ce165e44500dcd15.s3tc.ctex"]
+source_file="res://assets/models/wood.png"
+dest_files=["res://.godot/imported/wood.png-0cadb071daee779b2ad5994862e98c72.s3tc.ctex"]
 
 [params]
 
@@ -23,12 +20,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://assets/models/wood.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

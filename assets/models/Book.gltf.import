@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://blenkk7x26biy"
-path="res://.godot/imported/bottomMovelBlender.glb-35426babc6221a704e4a9890fe162c43.scn"
+uid="uid://b1mxxnel6k7h"
+path="res://.godot/imported/Book.gltf-b8396b41f4a0dd88894efbb382e31d78.scn"
 
 [deps]
 
-source_file="res://assets/models/bottomMovelBlender.glb"
-dest_files=["res://.godot/imported/bottomMovelBlender.glb-35426babc6221a704e4a9890fe162c43.scn"]
+source_file="res://assets/models/Book.gltf"
+dest_files=["res://.godot/imported/Book.gltf-b8396b41f4a0dd88894efbb382e31d78.scn"]
 
 [params]
 
