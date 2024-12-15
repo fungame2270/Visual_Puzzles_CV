@@ -8,7 +8,7 @@ extends StaticBody3D
 var current_rotation = 0
 var camera_distance = 5.0  # Distance from the object to the camera
 var player_distance = 1.0
-var rotation_speed = 0.005  # Speed of rotation
+var rotation_speed = 0.01  # Speed of rotation
 var locked = false
 
 var frustum_max

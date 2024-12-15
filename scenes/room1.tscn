@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://crldwarg4bk7o"]
+[gd_scene load_steps=27 format=3 uid="uid://crldwarg4bk7o"]
 
 [ext_resource type="PackedScene" uid="uid://dpys1nsf1saos" path="res://scenes/character.tscn" id="1_s1m4l"]
 [ext_resource type="PackedScene" uid="uid://bg1rwfvcw5qsq" path="res://scenes/tv.tscn" id="2_w0wtq"]
@@ -9,9 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://dnynb4ar3hgb2" path="res://assets/Planks037A_2K-JPG/Planks037A_2K-JPG_Metalness.jpg" id="6_32115"]
 [ext_resource type="Texture2D" uid="uid://dxha6q4qoomel" path="res://assets/sky.jpg" id="6_uu8qv"]
 [ext_resource type="Texture2D" uid="uid://cq6tx6tyve5lr" path="res://assets/Planks037A_2K-JPG/Planks037A_2K-JPG_NormalDX.jpg" id="7_hgls6"]
+[ext_resource type="PackedScene" uid="uid://dnnkja0yjv0p7" path="res://assets/models/Bottom_furniture.gltf" id="9_4wvrg"]
 [ext_resource type="PackedScene" uid="uid://386ha7wri7pn" path="res://scenes/furniture.tscn" id="9_cwdgy"]
 [ext_resource type="PackedScene" uid="uid://b1mxxnel6k7h" path="res://assets/models/Book.gltf" id="10_kk3cr"]
 [ext_resource type="Texture2D" uid="uid://byhs6smrltl6o" path="res://assets/models/textures/bookTexture3_hidden.png" id="11_nrpqb"]
+[ext_resource type="Texture2D" uid="uid://dnei37ei7r6o0" path="res://assets/models/textures/bookTexture3.png" id="12_8hgg5"]
+[ext_resource type="Material" uid="uid://cfgg3y1ornolb" path="res://assets/materials/book.tres" id="13_61c5f"]
+[ext_resource type="Texture2D" uid="uid://dcqxj3ivfopex" path="res://assets/models/textures/BookTexture2.png" id="15_54ege"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_cto3g"]
 viewport_path = NodePath("OutsideCameraViewport")
@@ -30,6 +34,15 @@ uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v6bm3"]
 albedo_texture = ExtResource("11_nrpqb")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ygxr4"]
+size = Vector3(1, 0.861145, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xgi50"]
+albedo_texture = ExtResource("12_8hgg5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kaqlf"]
+albedo_texture = ExtResource("15_54ege")
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_am4lk"]
 night_sky = ExtResource("6_uu8qv")
@@ -116,7 +129,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ut8u8")
 transform = Transform3D(-1.4, 0, -1.22392e-07, 0, 1.4, 0, 1.22392e-07, 0, -1.4, -2.14079, 0, -2.3)
 
 [node name="furniture2" parent="room" instance=ExtResource("9_cwdgy")]
-transform = Transform3D(-1.4, 0, -1.22392e-07, 0, 1.4, 0, 1.22392e-07, 0, -1.4, -0.74079, 0, -2.22346)
+transform = Transform3D(-1.4, 0, -1.22392e-07, 0, 1.4, 0, 1.22392e-07, 0, -1.4, -0.74079, 0, -2.25514)
 
 [node name="furniture3" parent="room" instance=ExtResource("9_cwdgy")]
 transform = Transform3D(-1.4, 0, -1.22392e-07, 0, 1.4, 0, 1.22392e-07, 0, -1.4, 0.65921, 0, -2.3)
@@ -124,12 +137,99 @@ transform = Transform3D(-1.4, 0, -1.22392e-07, 0, 1.4, 0, 1.22392e-07, 0, -1.4, 
 [node name="furniture4" parent="room" instance=ExtResource("9_cwdgy")]
 transform = Transform3D(-1.4, 0, -1.22392e-07, 0, 1.4, 0, 1.22392e-07, 0, -1.4, 2.05921, 0, -2.3)
 
-[node name="blockbench_export" parent="room" instance=ExtResource("10_kk3cr")]
-transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -0.74079, 1.08856, -2.98609)
+[node name="hidden_book" parent="room" instance=ExtResource("10_kk3cr")]
+transform = Transform3D(1.33748e-15, -0.7, -3.0598e-08, -3.0598e-08, -3.0598e-08, 0.7, -0.7, 0, -3.0598e-08, -0.432007, 0.194091, -2.98609)
 
-[node name="cuboid" parent="room/blockbench_export/Node" index="0"]
+[node name="cuboid" parent="room/hidden_book/Node" index="0"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.0625, 0)
 surface_material_override/0 = SubResource("StandardMaterial3D_v6bm3")
+
+[node name="bottom" type="StaticBody3D" parent="room"]
+transform = Transform3D(-5.24537e-08, 0, -1.2, 0, 1.2, 0, 1.2, 0, -5.24537e-08, -2.35774, 0.0185864, 0.399736)
+
+[node name="blockbench_export" parent="room/bottom" instance=ExtResource("9_4wvrg")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="room/bottom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.448273, 0)
+shape = SubResource("BoxShape3D_ygxr4")
+
+[node name="books" type="Node3D" parent="room"]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, -2.66552, 1.29068, -2.23622)
+
+[node name="book" parent="room/books" instance=ExtResource("10_kk3cr")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="cuboid" parent="room/books/book/Node" index="0"]
+surface_material_override/0 = ExtResource("13_61c5f")
+
+[node name="book2" parent="room/books" instance=ExtResource("10_kk3cr")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.0494177, 0, 0)
+
+[node name="cuboid" parent="room/books/book2/Node" index="0"]
+surface_material_override/0 = ExtResource("13_61c5f")
+
+[node name="book3" parent="room/books" instance=ExtResource("10_kk3cr")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.100473, 0, 0)
+
+[node name="cuboid" parent="room/books/book3/Node" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_xgi50")
+
+[node name="book4" parent="room/books" instance=ExtResource("10_kk3cr")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.149891, 0, 0)
+
+[node name="cuboid" parent="room/books/book4/Node" index="0"]
+surface_material_override/0 = ExtResource("13_61c5f")
+
+[node name="books2" type="Node3D" parent="room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.76033, 1.85977, -2.23622)
+
+[node name="book" parent="room/books2" instance=ExtResource("10_kk3cr")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="cuboid" parent="room/books2/book/Node" index="0"]
+surface_material_override/0 = ExtResource("13_61c5f")
+
+[node name="book2" parent="room/books2" instance=ExtResource("10_kk3cr")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.0494177, 0, 0)
+
+[node name="cuboid" parent="room/books2/book2/Node" index="0"]
+surface_material_override/0 = ExtResource("13_61c5f")
+
+[node name="book3" parent="room/books2" instance=ExtResource("10_kk3cr")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.100473, 0, 0)
+
+[node name="cuboid" parent="room/books2/book3/Node" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_xgi50")
+
+[node name="book4" parent="room/books2" instance=ExtResource("10_kk3cr")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.149891, 0, 0)
+
+[node name="cuboid" parent="room/books2/book4/Node" index="0"]
+surface_material_override/0 = ExtResource("13_61c5f")
+
+[node name="book5" parent="room/books2" instance=ExtResource("10_kk3cr")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.204891, 0, 0)
+
+[node name="cuboid" parent="room/books2/book5/Node" index="0"]
+surface_material_override/0 = ExtResource("13_61c5f")
+
+[node name="book6" parent="room/books2" instance=ExtResource("10_kk3cr")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.155473, 0, 0)
+
+[node name="cuboid" parent="room/books2/book6/Node" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_kaqlf")
+
+[node name="book7" parent="room/books2" instance=ExtResource("10_kk3cr")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.104418, 0, 0)
+
+[node name="cuboid" parent="room/books2/book7/Node" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_kaqlf")
+
+[node name="book8" parent="room/books2" instance=ExtResource("10_kk3cr")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.0550002, 0, 0)
+
+[node name="cuboid" parent="room/books2/book8/Node" index="0"]
+surface_material_override/0 = ExtResource("13_61c5f")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.00532591, 3.51993, 0.0531332)
@@ -147,4 +247,16 @@ environment = SubResource("Environment_8gv3t")
 [editable path="room/wall2"]
 [editable path="room/wall3"]
 [editable path="room/wall4"]
-[editable path="room/blockbench_export"]
+[editable path="room/hidden_book"]
+[editable path="room/books/book"]
+[editable path="room/books/book2"]
+[editable path="room/books/book3"]
+[editable path="room/books/book4"]
+[editable path="room/books2/book"]
+[editable path="room/books2/book2"]
+[editable path="room/books2/book3"]
+[editable path="room/books2/book4"]
+[editable path="room/books2/book5"]
+[editable path="room/books2/book6"]
+[editable path="room/books2/book7"]
+[editable path="room/books2/book8"]
