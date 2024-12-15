@@ -25,13 +25,15 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	if Input.is_action_pressed("move_left"):
-		rotation.y -= rotation_speed
-		blockbench_export.rotation.y += rotation_speed
-	elif Input.is_action_pressed("move_right"):
-		rotation.y += rotation_speed
-		blockbench_export.rotation.y -= rotation_speed
-	elif Input.is_action_just_pressed("interact"):
+	if locked:
+		if Input.is_action_pressed("move_left"):
+			rotation.y -= rotation_speed
+			blockbench_export.rotation.y += rotation_speed
+		elif Input.is_action_pressed("move_right"):
+			rotation.y += rotation_speed
+			blockbench_export.rotation.y -= rotation_speed
+			
+	if Input.is_action_just_pressed("interact"):
 		if not locked:
 			locked = true
 		else:

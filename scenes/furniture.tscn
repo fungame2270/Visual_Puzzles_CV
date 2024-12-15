@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://386ha7wri7pn"]
+
+[ext_resource type="PackedScene" uid="uid://bj752w8oxtexb" path="res://assets/models/Up_Furniture.gltf" id="1_aan0k"]
+[ext_resource type="PackedScene" uid="uid://dnnkja0yjv0p7" path="res://assets/models/Bottom_furniture.gltf" id="2_ec2f8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_87udx"]
+size = Vector3(1, 1.79663, 0.781494)
+
+[node name="furniture" type="StaticBody3D"]
+
+[node name="top" parent="." instance=ExtResource("1_aan0k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+
+[node name="bottom" parent="." instance=ExtResource("2_ec2f8")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.941772, 0.0574951)
+shape = SubResource("BoxShape3D_87udx")
