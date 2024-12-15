@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvelcl7ljp0en"]
+
+[ext_resource type="PackedScene" uid="uid://cj3xfrew3vhnn" path="res://assets/models/globe_Stand.gltf" id="1_5ewlj"]
+[ext_resource type="Texture2D" uid="uid://ct6386dtdoila" path="res://assets/textures/wold.jpg" id="2_r46dp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r2qsl"]
+albedo_texture = ExtResource("2_r46dp")
+
+[sub_resource type="SphereMesh" id="SphereMesh_ekxwe"]
+material = SubResource("StandardMaterial3D_r2qsl")
+
+[node name="blockbench_export" instance=ExtResource("1_5ewlj")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(-0.0994035, 0.0291281, 0.686251, -0.347208, 0.596156, -0.0755971, -0.592652, -0.354147, -0.0708137, -0.00731432, 0.778171, -0.0492544)
+mesh = SubResource("SphereMesh_ekxwe")

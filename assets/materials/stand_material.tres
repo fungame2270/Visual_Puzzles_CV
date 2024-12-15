@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bpflppxit6xju"]
+
+[ext_resource type="Texture2D" uid="uid://bcja0icwccwff" path="res://assets/textures/Globe_stand.png" id="1_kuyjt"]
+
+[resource]
+albedo_texture = ExtResource("1_kuyjt")
+texture_filter = 0
+texture_repeat = false
