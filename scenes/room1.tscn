@@ -116,7 +116,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ut8u8")
 transform = Transform3D(-1.4, 0, -1.22392e-07, 0, 1.4, 0, 1.22392e-07, 0, -1.4, -2.14079, 0, -2.3)
 
 [node name="furniture2" parent="room" instance=ExtResource("9_cwdgy")]
-transform = Transform3D(-1.4, 0, -1.22392e-07, 0, 1.4, 0, 1.22392e-07, 0, -1.4, -0.74079, 0, -2.22346)
+transform = Transform3D(-1.4, 0, -1.22392e-07, 0, 1.4, 0, 1.22392e-07, 0, -1.4, -0.74079, 0, -2.31808)
 
 [node name="furniture3" parent="room" instance=ExtResource("9_cwdgy")]
 transform = Transform3D(-1.4, 0, -1.22392e-07, 0, 1.4, 0, 1.22392e-07, 0, -1.4, 0.65921, 0, -2.3)
