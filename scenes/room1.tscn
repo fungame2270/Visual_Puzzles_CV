@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://crldwarg4bk7o"]
+[gd_scene load_steps=29 format=3 uid="uid://crldwarg4bk7o"]
 
 [ext_resource type="PackedScene" uid="uid://dpys1nsf1saos" path="res://scenes/character.tscn" id="1_s1m4l"]
 [ext_resource type="PackedScene" uid="uid://bg1rwfvcw5qsq" path="res://scenes/tv.tscn" id="2_w0wtq"]
@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://dnei37ei7r6o0" path="res://assets/models/textures/bookTexture3.png" id="12_8hgg5"]
 [ext_resource type="Material" uid="uid://cfgg3y1ornolb" path="res://assets/materials/book.tres" id="13_61c5f"]
 [ext_resource type="Texture2D" uid="uid://dcqxj3ivfopex" path="res://assets/models/textures/BookTexture2.png" id="15_54ege"]
+[ext_resource type="PackedScene" uid="uid://mark8tpce72k" path="res://assets/models/plant.gltf" id="16_emidy"]
+[ext_resource type="Material" uid="uid://bemyweia0wnyd" path="res://assets/materials/plant.tres" id="17_y7on5"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_cto3g"]
 viewport_path = NodePath("OutsideCameraViewport")
@@ -231,12 +233,41 @@ transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.0550002, 0, 0)
 [node name="cuboid" parent="room/books2/book8/Node" index="0"]
 surface_material_override/0 = ExtResource("13_61c5f")
 
+[node name="plant" parent="room" instance=ExtResource("16_emidy")]
+transform = Transform3D(0.198222, 0, 0.980157, 0, 1, 0, -0.980157, 0, 0.198222, -2.32171, 1.06904, 0.366367)
+
+[node name="cylinder" parent="room/plant/Node" index="0"]
+material_override = ExtResource("17_y7on5")
+
+[node name="plane" parent="room/plant/Node" index="1"]
+surface_material_override/0 = ExtResource("17_y7on5")
+
+[node name="plane2" parent="room/plant/Node" index="2"]
+surface_material_override/0 = ExtResource("17_y7on5")
+
+[node name="cuboid" parent="room/plant/Node" index="3"]
+material_override = ExtResource("17_y7on5")
+
+[node name="cuboid2" parent="room/plant/Node" index="4"]
+surface_material_override/0 = ExtResource("17_y7on5")
+
+[node name="plane3" parent="room/plant/Node" index="5"]
+surface_material_override/0 = ExtResource("17_y7on5")
+
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.00532591, 3.51993, 0.0531332)
 shadow_enabled = true
 shadow_opacity = 0.71
 spot_range = 8.0
 spot_angle = 75.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2.40135, 2.57821, 0.342354)
+visible = false
+shadow_enabled = true
+shadow_opacity = 0.71
+spot_range = 8.0
+spot_angle = 23.55
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8gv3t")
@@ -260,3 +291,4 @@ environment = SubResource("Environment_8gv3t")
 [editable path="room/books2/book6"]
 [editable path="room/books2/book7"]
 [editable path="room/books2/book8"]
+[editable path="room/plant"]
