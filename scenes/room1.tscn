@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://crldwarg4bk7o"]
+[gd_scene load_steps=33 format=3 uid="uid://crldwarg4bk7o"]
 
 [ext_resource type="PackedScene" uid="uid://dpys1nsf1saos" path="res://scenes/character.tscn" id="1_s1m4l"]
 [ext_resource type="PackedScene" uid="uid://bg1rwfvcw5qsq" path="res://scenes/tv.tscn" id="2_w0wtq"]
@@ -17,7 +17,10 @@
 [ext_resource type="Material" uid="uid://cfgg3y1ornolb" path="res://assets/materials/book.tres" id="13_61c5f"]
 [ext_resource type="Texture2D" uid="uid://dcqxj3ivfopex" path="res://assets/models/textures/BookTexture2.png" id="15_54ege"]
 [ext_resource type="PackedScene" uid="uid://mark8tpce72k" path="res://assets/models/plant.gltf" id="16_emidy"]
-[ext_resource type="Material" uid="uid://bemyweia0wnyd" path="res://assets/materials/plant.tres" id="17_y7on5"]
+[ext_resource type="PackedScene" uid="uid://dvulkb13xfg7j" path="res://assets/models/arte1.gltf" id="19_wvtou"]
+[ext_resource type="PackedScene" uid="uid://dbst35tc3c227" path="res://assets/models/arte2.gltf" id="20_ny4gc"]
+[ext_resource type="ArrayMesh" uid="uid://bl2xy1y2qxnrk" path="res://assets/models/vase.obj" id="20_vqxc7"]
+[ext_resource type="Shader" uid="uid://cktbrqvpvk63a" path="res://scenes/room1.tres" id="21_0psbg"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_cto3g"]
 viewport_path = NodePath("OutsideCameraViewport")
@@ -57,6 +60,10 @@ background_mode = 2
 sky = SubResource("Sky_ruud6")
 ambient_light_color = Color(0.129558, 0.129558, 0.129558, 1)
 ambient_light_sky_contribution = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pn7yi"]
+render_priority = 0
+shader = ExtResource("21_0psbg")
 
 [node name="Node3D" type="Node3D"]
 
@@ -233,26 +240,23 @@ transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.0550002, 0, 0)
 [node name="cuboid" parent="room/books2/book8/Node" index="0"]
 surface_material_override/0 = ExtResource("13_61c5f")
 
-[node name="plant" parent="room" instance=ExtResource("16_emidy")]
-transform = Transform3D(0.198222, 0, 0.980157, 0, 1, 0, -0.980157, 0, 0.198222, -2.32171, 1.06904, 0.366367)
+[node name="bottom2" type="StaticBody3D" parent="room"]
+transform = Transform3D(-5.24537e-08, 0, -1.2, 0, 1.2, 0, 1.2, 0, -5.24537e-08, -2.35774, 0.0185864, 2.30542)
 
-[node name="cylinder" parent="room/plant/Node" index="0"]
-material_override = ExtResource("17_y7on5")
+[node name="blockbench_export" parent="room/bottom2" instance=ExtResource("9_4wvrg")]
 
-[node name="plane" parent="room/plant/Node" index="1"]
-surface_material_override/0 = ExtResource("17_y7on5")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="room/bottom2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.448273, 0)
+shape = SubResource("BoxShape3D_ygxr4")
 
-[node name="plane2" parent="room/plant/Node" index="2"]
-surface_material_override/0 = ExtResource("17_y7on5")
+[node name="bottom3" type="StaticBody3D" parent="room"]
+transform = Transform3D(0.0701014, 0, 1.19795, 0, 1.5, 0, -1.19795, 0, 0.0701014, 2.45912, 0.0185864, 2.30542)
 
-[node name="cuboid" parent="room/plant/Node" index="3"]
-material_override = ExtResource("17_y7on5")
+[node name="blockbench_export" parent="room/bottom3" instance=ExtResource("9_4wvrg")]
 
-[node name="cuboid2" parent="room/plant/Node" index="4"]
-surface_material_override/0 = ExtResource("17_y7on5")
-
-[node name="plane3" parent="room/plant/Node" index="5"]
-surface_material_override/0 = ExtResource("17_y7on5")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="room/bottom3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.448273, 0)
+shape = SubResource("BoxShape3D_ygxr4")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.00532591, 3.51993, 0.0531332)
@@ -271,6 +275,20 @@ spot_angle = 23.55
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8gv3t")
+
+[node name="blockbench_export" parent="." instance=ExtResource("19_wvtou")]
+transform = Transform3D(0.240456, 0, -0.438384, 0, 0.5, 0, 0.438384, 0, 0.240456, 2.35109, 1.33096, 2.30323)
+
+[node name="blockbench_export2" parent="." instance=ExtResource("20_ny4gc")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.738601, 1.32923, -1.83345)
+
+[node name="blockbench_export3" parent="." instance=ExtResource("16_emidy")]
+transform = Transform3D(0.197657, 0, 0.980271, 0, 1, 0, -0.980271, 0, 0.197657, -2.36984, 1.0732, 0.258097)
+
+[node name="Vase" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30073, 0.957105, 1.05856)
+mesh = ExtResource("20_vqxc7")
+surface_material_override/0 = SubResource("ShaderMaterial_pn7yi")
 
 [editable path="room/floor"]
 [editable path="room/roof"]
@@ -291,4 +309,3 @@ environment = SubResource("Environment_8gv3t")
 [editable path="room/books2/book6"]
 [editable path="room/books2/book7"]
 [editable path="room/books2/book8"]
-[editable path="room/plant"]
