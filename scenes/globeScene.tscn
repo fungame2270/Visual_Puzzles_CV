@@ -1,16 +1,176 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvelcl7ljp0en"]
+[gd_scene load_steps=10 format=3 uid="uid://bvelcl7ljp0en"]
 
 [ext_resource type="PackedScene" uid="uid://cj3xfrew3vhnn" path="res://assets/models/globe_Stand.gltf" id="1_5ewlj"]
 [ext_resource type="Texture2D" uid="uid://ct6386dtdoila" path="res://assets/textures/wold.jpg" id="2_r46dp"]
+[ext_resource type="Script" path="res://scenes/globe_scene.gd" id="2_rc830"]
+[ext_resource type="Texture2D" uid="uid://cnpstoe6rffvr" path="res://assets/textures/wold_Normal_Bump.jpg" id="3_0b0l4"]
+[ext_resource type="Texture2D" uid="uid://b7uw8krwmmqbf" path="res://assets/textures/wold_Normal_Map.jpg" id="3_jqfmq"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r2qsl"]
-albedo_texture = ExtResource("2_r46dp")
+[sub_resource type="Shader" id="Shader_86prw"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.3.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
+
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
+uniform float point_size : hint_range(0.1, 128.0, 0.1);
+
+uniform float roughness : hint_range(0.0, 1.0);
+uniform sampler2D texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r, filter_linear_mipmap, repeat_enable;
+
+uniform float specular : hint_range(0.0, 1.0, 0.01);
+uniform float metallic : hint_range(0.0, 1.0, 0.01);
+
+uniform sampler2D texture_normal : hint_roughness_normal, filter_linear_mipmap, repeat_enable;
+uniform float normal_scale : hint_range(-16.0, 16.0);
+
+uniform sampler2D texture_heightmap : hint_default_black, filter_linear_mipmap, repeat_enable;
+uniform float heightmap_scale : hint_range(-16.0, 16.0, 0.001);
+uniform int heightmap_min_layers : hint_range(1, 64);
+uniform int heightmap_max_layers : hint_range(1, 64);
+uniform vec2 heightmap_flip;
+
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+uniform vec2 heightmap_translation;
+
+void vertex() {
+	UV = UV * uv1_scale.xy + uv1_offset.xy;
+}
+
+void fragment() {
+	vec2 base_uv = UV + heightmap_translation;
+	vec2 base_uv_albedo = UV;
+
+	{
+		// Height: Enabled
+		vec3 view_dir = normalize(normalize(-VERTEX + EYE_OFFSET) * mat3(TANGENT * heightmap_flip.x, -BINORMAL * heightmap_flip.y, NORMAL));
+
+		// Height Deep Parallax: Enabled
+		float num_layers = mix(float(heightmap_max_layers), float(heightmap_min_layers), abs(dot(vec3(0.0, 0.0, 1.0), view_dir)));
+		float layer_depth = 1.0 / num_layers;
+		float current_layer_depth = 0.0;
+		vec2 p = view_dir.xy * heightmap_scale * 0.01;
+		vec2 delta = p / num_layers;
+		vec2 ofs = base_uv;
+		float depth = 1.0 - texture(texture_heightmap, ofs).r;
+
+		float current_depth = 0.0;
+		while (current_depth < depth) {
+			ofs -= delta;
+			depth = 1.0 - texture(texture_heightmap, ofs).r;
+
+			current_depth += layer_depth;
+		}
+
+		vec2 prev_ofs = ofs + delta;
+		float after_depth = depth - current_depth;
+		float before_depth = (1.0 - texture(texture_heightmap, prev_ofs).r) - current_depth + layer_depth;
+
+		float weight = after_depth / (after_depth - before_depth);
+		ofs = mix(ofs, prev_ofs, weight);
+		base_uv = ofs;
+
+		vec2 uv = UV;
+	}
+
+	vec4 albedo_tex = texture(texture_albedo, base_uv_albedo);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+
+	float metallic_tex = dot(texture(texture_metallic, base_uv), metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	SPECULAR = specular;
+
+	vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
+	float roughness_tex = dot(texture(texture_roughness, base_uv), roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+
+	// Normal Map: Enabled
+	NORMAL_MAP = texture(texture_normal, base_uv).rgb;
+	NORMAL_MAP_DEPTH = normal_scale;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dvm3p"]
+render_priority = 0
+shader = SubResource("Shader_86prw")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/normal_scale = 1.703
+shader_parameter/heightmap_scale = -0.0109992
+shader_parameter/heightmap_min_layers = 64
+shader_parameter/heightmap_max_layers = 64
+shader_parameter/heightmap_flip = Vector2(1, 1)
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/heightmap_translation = Vector2(0, 0)
+shader_parameter/texture_albedo = ExtResource("2_r46dp")
+shader_parameter/texture_normal = ExtResource("3_jqfmq")
+shader_parameter/texture_heightmap = ExtResource("3_0b0l4")
 
 [sub_resource type="SphereMesh" id="SphereMesh_ekxwe"]
-material = SubResource("StandardMaterial3D_r2qsl")
+lightmap_size_hint = Vector2i(17, 9)
+material = SubResource("ShaderMaterial_dvm3p")
+
+[sub_resource type="BoxMesh" id="BoxMesh_6u3yb"]
 
 [node name="blockbench_export" instance=ExtResource("1_5ewlj")]
+script = ExtResource("2_rc830")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
 transform = Transform3D(-0.0994035, 0.0291281, 0.686251, -0.347208, 0.596156, -0.0755971, -0.592652, -0.354147, -0.0708137, -0.00731432, 0.778171, -0.0492544)
 mesh = SubResource("SphereMesh_ekxwe")
+
+[node name="Node3D" type="Node3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.793878, -0.0466907)
+
+[node name="Pivot" type="Node3D" parent="Node3D" index="0"]
+
+[node name="Ligths" type="Node3D" parent="Node3D/Pivot" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.794261, 0.0502346)
+
+[node name="Portugal" type="SpotLight3D" parent="Node3D/Pivot/Ligths" index="0"]
+transform = Transform3D(0.386317, 0.400493, 0.830882, -0.16885, 0.9163, -0.363159, -0.906779, -6.8459e-08, 0.421606, -0.263776, 0.985871, -0.164663)
+light_energy = 16.0
+spot_range = 10.7796
+spot_angle = 1.02435
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/Pivot/Ligths/Portugal" index="0"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+mesh = SubResource("BoxMesh_6u3yb")
+
+[node name="Franca" type="SpotLight3D" parent="Node3D/Pivot/Ligths" index="1"]
+transform = Transform3D(0.207647, 0.598304, 0.773896, 0.109358, 0.771982, -0.626167, -0.972072, 0.214653, 0.0948703, -0.233617, 1.02612, -0.149664)
+light_energy = 16.0
+spot_range = 10.7796
+spot_angle = 1.02435
+
+[node name="USA" type="SpotLight3D" parent="Node3D/Pivot/Ligths" index="2"]
+transform = Transform3D(0.512465, -0.842122, -0.167959, 0.550808, 0.47242, -0.688062, 0.65878, 0.260095, 0.705946, -0.0877036, 0.766944, -0.399328)
+light_energy = 16.0
+spot_range = 10.7796
+spot_angle = 1.02435
+
+[node name="India" type="SpotLight3D" parent="Node3D/Pivot/Ligths" index="3"]
+transform = Transform3D(-0.00300485, -0.998975, 0.045158, -0.734812, -0.0284235, -0.677675, 0.678264, -0.0352191, -0.733974, -0.0267726, 1.01965, 0.208168)
+light_energy = 16.0
+spot_range = 10.7796
+spot_angle = 1.02435
+
+[node name="Japao" type="SpotLight3D" parent="Node3D/Pivot/Ligths" index="4"]
+transform = Transform3D(0.215384, -0.402627, -0.889664, -0.461865, 0.760705, -0.456081, 0.860402, 0.509136, -0.0221156, 0.244503, 1.02284, -0.0132125)
+light_energy = 16.0
+spot_range = 10.7796
+spot_angle = 1.02435

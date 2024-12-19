@@ -1,11 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://k50unyae2crp"]
+[gd_scene load_steps=19 format=3 uid="uid://k50unyae2crp"]
 
 [ext_resource type="PackedScene" uid="uid://dpys1nsf1saos" path="res://scenes/character.tscn" id="1_qgfbw"]
 [ext_resource type="PackedScene" uid="uid://cwlseuvlswo8h" path="res://scenes/wall.tscn" id="4_ie4en"]
 [ext_resource type="Texture2D" uid="uid://ilovypkvnu3e" path="res://assets/Planks037A_2K-JPG/Planks037A_2K-JPG_Color.jpg" id="5_7dn6c"]
 [ext_resource type="Texture2D" uid="uid://dnynb4ar3hgb2" path="res://assets/Planks037A_2K-JPG/Planks037A_2K-JPG_Metalness.jpg" id="6_py5yw"]
 [ext_resource type="Texture2D" uid="uid://cq6tx6tyve5lr" path="res://assets/Planks037A_2K-JPG/Planks037A_2K-JPG_NormalDX.jpg" id="7_ngrmu"]
+[ext_resource type="PackedScene" uid="uid://c4vpdv5qv0rd4" path="res://assets/models/roundTable.gltf" id="8_1wxcp"]
 [ext_resource type="Material" uid="uid://bhmjeu3tqc4ie" path="res://assets/materials/wall.tres" id="8_p6pfl"]
+[ext_resource type="PackedScene" uid="uid://bvelcl7ljp0en" path="res://scenes/globeScene.tscn" id="9_unirn"]
+[ext_resource type="Texture2D" uid="uid://bue0c1sccxvad" path="res://assets/textures/wold_pinned.jpg" id="10_aly16"]
 [ext_resource type="Texture2D" uid="uid://dxha6q4qoomel" path="res://assets/sky.jpg" id="16_ios6p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vnqp7"]
@@ -31,6 +34,16 @@ background_mode = 2
 sky = SubResource("Sky_ruud6")
 ambient_light_color = Color(0.129558, 0.129558, 0.129558, 1)
 ambient_light_sky_contribution = 0.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_inbvj"]
+height = 0.124117
+radius = 0.749099
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ra3ht"]
+albedo_texture = ExtResource("10_aly16")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kjnfl"]
+material = SubResource("StandardMaterial3D_ra3ht")
 
 [node name="Node3D" type="Node3D"]
 
@@ -86,6 +99,18 @@ shadow_opacity = 0.71
 spot_range = 8.0
 spot_angle = 75.0
 
+[node name="SpotLight3D3" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.771103, 0.636711, 0, -0.636711, -0.771103, -0.0204678, 3.05712, 0.9118)
+light_energy = 16.0
+light_specular = 0.177
+light_bake_mode = 1
+shadow_enabled = true
+shadow_opacity = 0.71
+spot_range = 5.737
+spot_attenuation = 3.66
+spot_angle = 40.66
+spot_angle_attenuation = 1.93187
+
 [node name="SpotLight3D2" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2.40135, 2.57821, 0.342354)
 visible = false
@@ -97,9 +122,30 @@ spot_angle = 23.55
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8gv3t")
 
+[node name="Globe" type="StaticBody3D" parent="."]
+transform = Transform3D(0.433795, 0, 0.414514, 0, 0.6, 0, -0.414514, 0, 0.433795, -0.305656, 1.04685, -0.139302)
+
+[node name="Model" parent="Globe" instance=ExtResource("9_unirn")]
+
+[node name="Table" type="StaticBody3D" parent="."]
+
+[node name="table" parent="Table" instance=ExtResource("8_1wxcp")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.93212, 0)
+shape = SubResource("CylinderShape3D_inbvj")
+
+[node name="Map" type="StaticBody3D" parent="."]
+transform = Transform3D(-1.6196, 1.42389e-07, -6.22402e-15, 0, -4.12198e-08, -0.943, -2.44553e-07, -0.943, 4.12198e-08, -0.147015, 1.67546, 2.99671)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map"]
+mesh = SubResource("PlaneMesh_kjnfl")
+
 [editable path="room/floor"]
 [editable path="room/roof"]
 [editable path="room/wall"]
 [editable path="room/wall2"]
 [editable path="room/wall3"]
 [editable path="room/wall4"]
+[editable path="Table/table"]
