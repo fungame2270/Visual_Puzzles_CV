@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://dxav3q4qei1c3"]
+
+[ext_resource type="Texture2D" uid="uid://ilovypkvnu3e" path="res://assets/Planks037A_2K-JPG/Planks037A_2K-JPG_Color.jpg" id="1_4aaaa"]
+[ext_resource type="Texture2D" uid="uid://dnynb4ar3hgb2" path="res://assets/Planks037A_2K-JPG/Planks037A_2K-JPG_Metalness.jpg" id="2_chws4"]
+[ext_resource type="Texture2D" uid="uid://cq6tx6tyve5lr" path="res://assets/Planks037A_2K-JPG/Planks037A_2K-JPG_NormalDX.jpg" id="3_b7m0f"]
+
+[resource]
+albedo_texture = ExtResource("1_4aaaa")
+metallic = 1.0
+metallic_texture = ExtResource("2_chws4")
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = ExtResource("3_b7m0f")
+uv1_scale = Vector3(1.4, 1.4, 1.4)
+uv1_triplanar = true

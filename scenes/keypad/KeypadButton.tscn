@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3i7gdtoi1dcc"]
+
+[ext_resource type="FontFile" path="res://fonts/roboto16.tres" id="1"]
+[ext_resource type="Script" path="res://scenes/interactable/KeypadButton.gd" id="2"]
+
+[sub_resource type="StandardMaterial3D" id="1"]
+albedo_color = Color(0.372549, 0.372549, 0.372549, 1)
+roughness = 0.56
+
+[sub_resource type="BoxMesh" id="2"]
+material = SubResource("1")
+size = Vector3(0.1, 0.1, 0.01)
+
+[sub_resource type="ViewportTexture" id="3"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxShape3D" id="4"]
+size = Vector3(0.1, 0.1, 0.012)
+
+[node name="KeypadButton" type="StaticBody3D"]
+collision_layer = 2
+script = ExtResource("2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("2")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(20, 20)
+
+[node name="Label" type="Label" parent="SubViewport"]
+custom_minimum_size = Vector2(20, 20)
+offset_right = 11.0
+offset_bottom = 19.0
+theme_override_fonts/font = ExtResource("1")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -0.006)
+flip_h = true
+flip_v = true
+texture = SubResource("3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("4")

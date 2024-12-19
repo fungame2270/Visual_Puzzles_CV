@@ -22,7 +22,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-383.611, 75.03)
 nodes/fragment/2/node = SubResource("VisualShaderNodeInput_omkee")
 nodes/fragment/2/position = Vector2(-140, 460)
 nodes/fragment/connections = PackedInt32Array(2, 0, 0, 9, 2, 0, 0, 8)

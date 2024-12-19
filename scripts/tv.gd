@@ -21,7 +21,12 @@ var scroll_mode = ""
 func _ready() -> void:
 	frustum_max = camera_3d.far
 	frustum_min = camera_3d.near
-	print(frustum_max, frustum_min)
+
+func interact():
+	if not locked:
+		locked = true
+	else:
+		locked = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -33,11 +38,11 @@ func _physics_process(delta: float) -> void:
 			rotation.y += rotation_speed
 			blockbench_export.rotation.y -= rotation_speed
 			
-	if Input.is_action_just_pressed("interact"):
-		if not locked:
-			locked = true
-		else:
-			locked = false
+	#if Input.is_action_just_pressed("interact"):
+		#if not locked:
+			#locked = true
+		#else:
+			#locked = false
 
 	if locked:
 		if Input.is_action_just_released("extra_1"):

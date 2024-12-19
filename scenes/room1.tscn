@@ -1,15 +1,14 @@
-[gd_scene load_steps=33 format=3 uid="uid://crldwarg4bk7o"]
+[gd_scene load_steps=29 format=3 uid="uid://crldwarg4bk7o"]
 
 [ext_resource type="PackedScene" uid="uid://dpys1nsf1saos" path="res://scenes/character.tscn" id="1_s1m4l"]
 [ext_resource type="PackedScene" uid="uid://bg1rwfvcw5qsq" path="res://scenes/tv.tscn" id="2_w0wtq"]
 [ext_resource type="Script" path="res://scripts/tv.gd" id="3_1lkmw"]
-[ext_resource type="Texture2D" uid="uid://ilovypkvnu3e" path="res://assets/Planks037A_2K-JPG/Planks037A_2K-JPG_Color.jpg" id="5_a2f0n"]
 [ext_resource type="Material" uid="uid://bhmjeu3tqc4ie" path="res://assets/materials/wall.tres" id="5_nto02"]
+[ext_resource type="Material" uid="uid://dxav3q4qei1c3" path="res://assets/materials/floor.tres" id="5_p27p8"]
 [ext_resource type="PackedScene" uid="uid://cwlseuvlswo8h" path="res://scenes/wall.tscn" id="5_wbnhc"]
-[ext_resource type="Texture2D" uid="uid://dnynb4ar3hgb2" path="res://assets/Planks037A_2K-JPG/Planks037A_2K-JPG_Metalness.jpg" id="6_32115"]
 [ext_resource type="Texture2D" uid="uid://dxha6q4qoomel" path="res://assets/sky.jpg" id="6_uu8qv"]
-[ext_resource type="Texture2D" uid="uid://cq6tx6tyve5lr" path="res://assets/Planks037A_2K-JPG/Planks037A_2K-JPG_NormalDX.jpg" id="7_hgls6"]
 [ext_resource type="PackedScene" uid="uid://dnnkja0yjv0p7" path="res://assets/models/Bottom_furniture.gltf" id="9_4wvrg"]
+[ext_resource type="PackedScene" uid="uid://cgmst0j6rhce6" path="res://scenes/door.tscn" id="9_bw7l6"]
 [ext_resource type="PackedScene" uid="uid://386ha7wri7pn" path="res://scenes/furniture.tscn" id="9_cwdgy"]
 [ext_resource type="PackedScene" uid="uid://b1mxxnel6k7h" path="res://assets/models/Book.gltf" id="10_kk3cr"]
 [ext_resource type="Texture2D" uid="uid://byhs6smrltl6o" path="res://assets/models/textures/bookTexture3_hidden.png" id="11_nrpqb"]
@@ -18,22 +17,11 @@
 [ext_resource type="Texture2D" uid="uid://dcqxj3ivfopex" path="res://assets/models/textures/BookTexture2.png" id="15_54ege"]
 [ext_resource type="PackedScene" uid="uid://mark8tpce72k" path="res://assets/models/plant.gltf" id="16_emidy"]
 [ext_resource type="PackedScene" uid="uid://dvulkb13xfg7j" path="res://assets/models/arte1.gltf" id="19_wvtou"]
+[ext_resource type="PackedScene" uid="uid://c4y3e6gshewtf" path="res://scenes/keypad/Keypad.tscn" id="20_i5si7"]
 [ext_resource type="PackedScene" uid="uid://dbst35tc3c227" path="res://assets/models/arte2.gltf" id="20_ny4gc"]
-[ext_resource type="ArrayMesh" uid="uid://bl2xy1y2qxnrk" path="res://assets/models/vase.obj" id="20_vqxc7"]
-[ext_resource type="Shader" uid="uid://cktbrqvpvk63a" path="res://scenes/room1.tres" id="21_0psbg"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_cto3g"]
 viewport_path = NodePath("OutsideCameraViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vnqp7"]
-albedo_texture = ExtResource("5_a2f0n")
-metallic = 1.0
-metallic_texture = ExtResource("6_32115")
-normal_enabled = true
-normal_scale = 2.0
-normal_texture = ExtResource("7_hgls6")
-uv1_scale = Vector3(1.4, 1.4, 1.4)
-uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ut8u8"]
 
@@ -61,11 +49,7 @@ sky = SubResource("Sky_ruud6")
 ambient_light_color = Color(0.129558, 0.129558, 0.129558, 1)
 ambient_light_sky_contribution = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pn7yi"]
-render_priority = 0
-shader = ExtResource("21_0psbg")
-
-[node name="Node3D" type="Node3D"]
+[node name="room1" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_s1m4l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.304037, 1.87138)
@@ -82,6 +66,7 @@ far = 10.0
 
 [node name="tv" parent="." instance=ExtResource("2_w0wtq")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.05, 0)
+collision_layer = 3
 script = ExtResource("3_1lkmw")
 
 [node name="CameraFeed" type="Sprite3D" parent="tv"]
@@ -99,7 +84,7 @@ transform = Transform3D(6, 0, 0, 0, -2.62268e-07, 6, 0, -6, -2.62268e-07, 0, 0, 
 
 [node name="MeshInstance3D" parent="room/floor" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 1.42109e-14, 0, -1.42109e-14, 1, -0.000262926, -8.10028e-05, 0.00203116)
-surface_material_override/0 = SubResource("StandardMaterial3D_vnqp7")
+surface_material_override/0 = ExtResource("5_p27p8")
 
 [node name="roof" parent="room" instance=ExtResource("5_wbnhc")]
 transform = Transform3D(6, 0, 0, 0, -2.62268e-07, -6, 0, 6, -2.62268e-07, 0, 3.5, 0)
@@ -120,19 +105,38 @@ transform = Transform3D(6, 0, 0, 0, -3.5, 9.05975e-07, 0, -5.28485e-07, -6, 0, 1
 material_override = ExtResource("5_nto02")
 surface_material_override/0 = SubResource("StandardMaterial3D_ut8u8")
 
-[node name="wall3" parent="room" instance=ExtResource("5_wbnhc")]
-transform = Transform3D(-2.62268e-07, 0, -6, 0, 3.5, 0, 6, 0, -2.62268e-07, 3, 1.75, 0)
-
-[node name="MeshInstance3D" parent="room/wall3" index="1"]
-material_override = ExtResource("5_nto02")
-surface_material_override/0 = SubResource("StandardMaterial3D_ut8u8")
-
 [node name="wall4" parent="room" instance=ExtResource("5_wbnhc")]
 transform = Transform3D(-2.62268e-07, 0, 6, 0, 3.5, 0, -6, 0, -2.62268e-07, -3, 1.75, 0)
 
 [node name="MeshInstance3D" parent="room/wall4" index="1"]
 material_override = ExtResource("5_nto02")
 surface_material_override/0 = SubResource("StandardMaterial3D_ut8u8")
+
+[node name="door_wall" type="Node3D" parent="room"]
+
+[node name="wall3" parent="room/door_wall" instance=ExtResource("5_wbnhc")]
+transform = Transform3D(-1.00536e-07, 0, -6, 0, 3.5, 0, 2.3, 0, -2.62268e-07, 3, 1.75, -1.85)
+
+[node name="MeshInstance3D" parent="room/door_wall/wall3" index="1"]
+material_override = ExtResource("5_nto02")
+surface_material_override/0 = SubResource("StandardMaterial3D_ut8u8")
+
+[node name="wall5" parent="room/door_wall" instance=ExtResource("5_wbnhc")]
+transform = Transform3D(-1.00536e-07, 0, -6, 0, 3.5, 0, 2.3, 0, -2.62268e-07, 3, 1.75, 1.85)
+
+[node name="MeshInstance3D" parent="room/door_wall/wall5" index="1"]
+material_override = ExtResource("5_nto02")
+surface_material_override/0 = SubResource("StandardMaterial3D_ut8u8")
+
+[node name="wall6" parent="room/door_wall" instance=ExtResource("5_wbnhc")]
+transform = Transform3D(-6.11959e-08, 0, -6, 0, 1, 0, 1.4, 0, -2.62268e-07, 3, 3, 0)
+
+[node name="MeshInstance3D" parent="room/door_wall/wall6" index="1"]
+material_override = ExtResource("5_nto02")
+surface_material_override/0 = SubResource("StandardMaterial3D_ut8u8")
+
+[node name="door" parent="room/door_wall" instance=ExtResource("9_bw7l6")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 0, -0.7)
 
 [node name="furniture" parent="room" instance=ExtResource("9_cwdgy")]
 transform = Transform3D(-1.4, 0, -1.22392e-07, 0, 1.4, 0, 1.22392e-07, 0, -1.4, -2.14079, 0, -2.3)
@@ -285,17 +289,18 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.738601, 1.32923, -1.8
 [node name="blockbench_export3" parent="." instance=ExtResource("16_emidy")]
 transform = Transform3D(0.197657, 0, 0.980271, 0, 1, 0, -0.980271, 0, 0.197657, -2.36984, 1.0732, 0.258097)
 
-[node name="Vase" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30073, 0.957105, 1.05856)
-mesh = ExtResource("20_vqxc7")
-surface_material_override/0 = SubResource("ShaderMaterial_pn7yi")
+[node name="Keypad" parent="." node_paths=PackedStringArray("door") instance=ExtResource("20_i5si7")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.96458, 1.79265, 0.977885)
+door = NodePath("../room/door_wall/door")
 
 [editable path="room/floor"]
 [editable path="room/roof"]
 [editable path="room/wall"]
 [editable path="room/wall2"]
-[editable path="room/wall3"]
 [editable path="room/wall4"]
+[editable path="room/door_wall/wall3"]
+[editable path="room/door_wall/wall5"]
+[editable path="room/door_wall/wall6"]
 [editable path="room/hidden_book"]
 [editable path="room/books/book"]
 [editable path="room/books/book2"]

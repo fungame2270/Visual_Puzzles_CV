@@ -1,12 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://g68b8spj2ps4"]
+[gd_scene load_steps=21 format=3 uid="uid://g68b8spj2ps4"]
 
 [ext_resource type="PackedScene" uid="uid://dpys1nsf1saos" path="res://scenes/character.tscn" id="1_op4jc"]
 [ext_resource type="PackedScene" uid="uid://c4vpdv5qv0rd4" path="res://assets/models/roundTable.gltf" id="3_iptkf"]
+[ext_resource type="Material" uid="uid://dxav3q4qei1c3" path="res://assets/materials/floor.tres" id="3_p7433"]
 [ext_resource type="PackedScene" uid="uid://cwlseuvlswo8h" path="res://scenes/wall.tscn" id="4_1nnah"]
-[ext_resource type="PackedScene" uid="uid://b1mxxnel6k7h" path="res://assets/models/Book.gltf" id="4_p3slm"]
-[ext_resource type="Texture2D" uid="uid://dnei37ei7r6o0" path="res://assets/models/textures/bookTexture3.png" id="5_ebnwa"]
+[ext_resource type="Material" uid="uid://bhmjeu3tqc4ie" path="res://assets/materials/wall.tres" id="4_4785k"]
 [ext_resource type="Texture2D" uid="uid://dxha6q4qoomel" path="res://assets/sky.jpg" id="5_ice8k"]
-[ext_resource type="Texture2D" uid="uid://7xawrxi3q55" path="res://idk.png" id="6_guns0"]
+[ext_resource type="ArrayMesh" uid="uid://cdgfthvrf62sy" path="res://assets/models/vase.obj" id="5_sxr3i"]
+[ext_resource type="Script" path="res://scripts/light.gd" id="6_gw2nm"]
+[ext_resource type="Texture2D" uid="uid://ciordl438nphu" path="res://assets/Porcelain001_1K-JPG/Porcelain001_1K-JPG_NormalDX.jpg" id="7_3gnr0"]
+[ext_resource type="Texture2D" uid="uid://2ug4c8ahki7s" path="res://assets/Porcelain001_1K-JPG/Porcelain001_1K-JPG_Roughness.jpg" id="8_ffak6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pk377"]
 
@@ -15,15 +18,7 @@ normal_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ut8u8"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hwo7n"]
-render_priority = 1
-transparency = 1
-albedo_texture = ExtResource("6_guns0")
-metallic_specular = 1.0
-roughness = 0.2
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mppfv"]
-albedo_texture = ExtResource("5_ebnwa")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4atyk"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_am4lk"]
 night_sky = ExtResource("5_ice8k")
@@ -37,7 +32,15 @@ background_energy_multiplier = 0.0
 sky = SubResource("Sky_ruud6")
 ambient_light_color = Color(0.129558, 0.129558, 0.129558, 1)
 ambient_light_sky_contribution = 0.0
-ambient_light_energy = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_10lp3"]
+roughness_texture = ExtResource("8_ffak6")
+normal_enabled = true
+normal_texture = ExtResource("7_3gnr0")
+
+[sub_resource type="BoxMesh" id="BoxMesh_6ouua"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhcg2"]
 
 [node name="room2" type="Node3D"]
 
@@ -61,6 +64,7 @@ transform = Transform3D(6, 0, 0, 0, -2.62268e-07, 6, 0, -6, -2.62268e-07, 0, 0, 
 
 [node name="MeshInstance3D" parent="room/floor" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 7.10543e-15, 0, -7.10543e-15, 1, -0.000432968, -6.20684e-05, 0.00166676)
+surface_material_override/0 = ExtResource("3_p7433")
 
 [node name="roof" parent="room" instance=ExtResource("4_1nnah")]
 transform = Transform3D(6, 0, 0, 0, -2.62268e-07, -6, 0, 6, -2.62268e-07, 0, 3.5, 0)
@@ -86,21 +90,32 @@ transform = Transform3D(-2.62268e-07, 0, -6, 0, 3.5, 0, 6, 0, -2.62268e-07, 3, 1
 [node name="MeshInstance3D" parent="room/wall3" index="1"]
 surface_material_override/0 = SubResource("StandardMaterial3D_ut8u8")
 
-[node name="wall4" parent="room" instance=ExtResource("4_1nnah")]
-transform = Transform3D(-2.62268e-07, 0, 6, 0, 3.5, 0, -6, 0, -2.62268e-07, -3, 1.75, 0)
-
-[node name="MeshInstance3D" parent="room/wall4" index="1"]
-surface_material_override/0 = SubResource("StandardMaterial3D_ut8u8")
-
 [node name="table" parent="room" instance=ExtResource("3_iptkf")]
 transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 0, 0)
 
-[node name="book" parent="room" instance=ExtResource("4_p3slm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.206575, 0.989312, 0.138177)
+[node name="door_wall" type="Node3D" parent="room"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
-[node name="cuboid" parent="room/book/Node" index="0"]
-material_overlay = SubResource("StandardMaterial3D_hwo7n")
-surface_material_override/0 = SubResource("StandardMaterial3D_mppfv")
+[node name="wall3" parent="room/door_wall" instance=ExtResource("4_1nnah")]
+transform = Transform3D(-1.00536e-07, 0, -6, 0, 3.5, 0, 2.3, 0, -2.62268e-07, 3, 1.75, -1.85)
+
+[node name="MeshInstance3D" parent="room/door_wall/wall3" index="1"]
+material_override = ExtResource("4_4785k")
+surface_material_override/0 = SubResource("StandardMaterial3D_4atyk")
+
+[node name="wall5" parent="room/door_wall" instance=ExtResource("4_1nnah")]
+transform = Transform3D(-1.00536e-07, 0, -6, 0, 3.5, 0, 2.3, 0, -2.62268e-07, 3, 1.75, 1.85)
+
+[node name="MeshInstance3D" parent="room/door_wall/wall5" index="1"]
+material_override = ExtResource("4_4785k")
+surface_material_override/0 = SubResource("StandardMaterial3D_4atyk")
+
+[node name="wall6" parent="room/door_wall" instance=ExtResource("4_1nnah")]
+transform = Transform3D(-6.11959e-08, 0, -6, 0, 1, 0, 1.4, 0, -2.62268e-07, 3, 3, 0)
+
+[node name="MeshInstance3D" parent="room/door_wall/wall6" index="1"]
+material_override = ExtResource("4_4785k")
+surface_material_override/0 = SubResource("StandardMaterial3D_4atyk")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.34134, 0)
@@ -108,14 +123,42 @@ shadow_enabled = true
 shadow_opacity = 0.71
 spot_range = 8.0
 spot_angle = 80.0
+script = ExtResource("6_gw2nm")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8gv3t")
+
+[node name="Vase" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.862, 0)
+mesh = ExtResource("5_sxr3i")
+surface_material_override/0 = SubResource("StandardMaterial3D_10lp3")
+
+[node name="symbol" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.40788, 1.77905, -2.89629)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="symbol"]
+transform = Transform3D(1, 0, 0, 0, 0.303, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("BoxMesh_6ouua")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_qhcg2")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="symbol"]
+transform = Transform3D(1, 0, 0, 0, 0.303, 0, 0, 0, 0.1, -0.372032, 0.84754, 0)
+mesh = SubResource("BoxMesh_6ouua")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_qhcg2")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="symbol"]
+transform = Transform3D(-8.5718e-08, 0.303, 0, -1.961, -1.32446e-08, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("BoxMesh_6ouua")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_qhcg2")
 
 [editable path="room/floor"]
 [editable path="room/roof"]
 [editable path="room/wall"]
 [editable path="room/wall2"]
 [editable path="room/wall3"]
-[editable path="room/wall4"]
-[editable path="room/book"]
+[editable path="room/door_wall/wall3"]
+[editable path="room/door_wall/wall5"]
+[editable path="room/door_wall/wall6"]
