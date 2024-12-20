@@ -5,7 +5,14 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const mouse_sensitivity = 0.002
 var locked = false
+var owns_flashlight = false
 @onready var ray_cast_3d: RayCast3D = $Camera3D/RayCast3D
+@onready var flashlight: SpotLight3D = $Camera3D/SpotLight3D
+
+func toggle_flashlight():
+	flashlight.visible = false if flashlight.visible else true
+	if not owns_flashlight:
+		owns_flashlight = true
 
 func lock():
 	if locked:
@@ -31,7 +38,10 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact"):
 		if ray_cast_3d.is_colliding():
 			var collision = ray_cast_3d.get_collider()
-			collision.interact()
+			collision.interact(self)
+
+	if Input.is_action_just_pressed("flashlight") and owns_flashlight:
+		toggle_flashlight()
 
 	if locked:
 		return

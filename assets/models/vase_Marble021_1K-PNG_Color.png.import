@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://31c1pugkrkmd"
-path.s3tc="res://.godot/imported/Tv_texture.png-888e4a7172e9b81bceba2525f20adcbb.s3tc.ctex"
+uid="uid://pwmv4tgdskef"
+path.s3tc="res://.godot/imported/vase_Marble021_1K-PNG_Color.png-b6d9f994cd74e708b7acbaff08e1237a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "8bc797748559cb2301b53457e448b931"
+}
 
 [deps]
 
-source_file="res://assets/blockBenchFiles/textures/Tv_texture.png"
-dest_files=["res://.godot/imported/Tv_texture.png-888e4a7172e9b81bceba2525f20adcbb.s3tc.ctex"]
+source_file="res://assets/models/vase_Marble021_1K-PNG_Color.png"
+dest_files=["res://.godot/imported/vase_Marble021_1K-PNG_Color.png-b6d9f994cd74e708b7acbaff08e1237a.s3tc.ctex"]
 
 [params]
 

@@ -1,18 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgxr88lslvojw"]
+[gd_scene load_steps=9 format=3 uid="uid://dgxr88lslvojw"]
 
 [ext_resource type="PackedScene" uid="uid://crldwarg4bk7o" path="res://scenes/room1.tscn" id="1_xxw86"]
 [ext_resource type="PackedScene" uid="uid://g68b8spj2ps4" path="res://scenes/room2.tscn" id="2_r86kl"]
 [ext_resource type="PackedScene" uid="uid://cwlseuvlswo8h" path="res://scenes/wall.tscn" id="3_7eq8f"]
+[ext_resource type="Texture2D" uid="uid://dxha6q4qoomel" path="res://assets/sky.jpg" id="4_d2j1y"]
+[ext_resource type="PackedScene" uid="uid://k50unyae2crp" path="res://scenes/room3.tscn" id="5_j16ub"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_qox12"]
+night_sky = ExtResource("4_d2j1y")
+
+[sub_resource type="Sky" id="Sky_ruud6"]
+sky_material = SubResource("PhysicalSkyMaterial_qox12")
+
+[sub_resource type="Environment" id="Environment_gvu01"]
+background_mode = 2
+background_energy_multiplier = 0.0
+sky = SubResource("Sky_ruud6")
+ambient_light_color = Color(0.129558, 0.129558, 0.129558, 1)
+ambient_light_sky_contribution = 0.0
 
 [node name="GameWorld" type="Node3D"]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gvu01")
+
 [node name="room1" parent="." instance=ExtResource("1_xxw86")]
-
-[node name="room2" parent="." instance=ExtResource("2_r86kl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.37375, 0, 0)
-
-[node name="Player" parent="room2" index="0"]
-visible = false
 
 [node name="tunel_1_to_2" type="Node3D" parent="."]
 
@@ -28,12 +40,39 @@ transform = Transform3D(2.38, 0, 0, 0, 2.55, 0, 0, 0, 1, 4.186, 1.245, -0.7)
 [node name="wall4" parent="tunel_1_to_2" instance=ExtResource("3_7eq8f")]
 transform = Transform3D(-2.38, 0, -1.50996e-07, 0, 2.55, 0, 3.5937e-07, 0, -1, 4.186, 1.245, 0.7)
 
+[node name="room2" parent="." instance=ExtResource("2_r86kl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.37375, 0, 0)
+
+[node name="Player" parent="room2" index="0"]
+visible = false
+
+[node name="tunel_1_to_3" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.374, 0, 0)
+
+[node name="wall" parent="tunel_1_to_3" instance=ExtResource("3_7eq8f")]
+transform = Transform3D(2.45, 0, 0, 0, -6.11959e-08, 1, 0, -1.4, -4.37114e-08, 4.185, 0, 0)
+
+[node name="wall2" parent="tunel_1_to_3" instance=ExtResource("3_7eq8f")]
+transform = Transform3D(2.38, 0, 0, 0, -6.11959e-08, -1, 0, 1.4, -4.37114e-08, 4.19, 2.5, 0)
+
+[node name="wall3" parent="tunel_1_to_3" instance=ExtResource("3_7eq8f")]
+transform = Transform3D(2.38, 0, 0, 0, 2.55, 0, 0, 0, 1, 4.186, 1.245, -0.7)
+
+[node name="wall4" parent="tunel_1_to_3" instance=ExtResource("3_7eq8f")]
+transform = Transform3D(-2.38, 0, -1.50996e-07, 0, 2.55, 0, 3.5937e-07, 0, -1, 4.186, 1.245, 0.7)
+
+[node name="room3" parent="." instance=ExtResource("5_j16ub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.374, 0, 8.382)
+
 [editable path="room2"]
 [editable path="room2/room/floor"]
 [editable path="room2/room/roof"]
 [editable path="room2/room/wall"]
-[editable path="room2/room/wall2"]
 [editable path="room2/room/wall3"]
+[editable path="room2/room/table/vase"]
 [editable path="room2/room/door_wall/wall3"]
 [editable path="room2/room/door_wall/wall5"]
 [editable path="room2/room/door_wall/wall6"]
+[editable path="room2/room/door_wall2/wall3"]
+[editable path="room2/room/door_wall2/wall5"]
+[editable path="room2/room/door_wall2/wall6"]

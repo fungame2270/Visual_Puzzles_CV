@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://deuc62i2eb87b"]
+
+[ext_resource type="Script" path="res://scripts/light_switch.gd" id="1_y5r5o"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dn6ls"]
+size = Vector3(0.1, 0.2, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_44f7i"]
+albedo_color = Color(0.513233, 0.513233, 0.513233, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_23vl4"]
+size = Vector3(0.4, 0.4, 0.1)
+
+[node name="light_switch" type="StaticBody3D"]
+collision_layer = 2
+script = ExtResource("1_y5r5o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_dn6ls")
+surface_material_override/0 = SubResource("StandardMaterial3D_44f7i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_23vl4")

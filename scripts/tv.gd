@@ -22,7 +22,7 @@ func _ready() -> void:
 	frustum_max = camera_3d.far
 	frustum_min = camera_3d.near
 
-func interact():
+func interact(caller):
 	if not locked:
 		locked = true
 	else:

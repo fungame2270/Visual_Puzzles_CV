@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://31c1pugkrkmd"
-path.s3tc="res://.godot/imported/Tv_texture.png-888e4a7172e9b81bceba2525f20adcbb.s3tc.ctex"
+uid="uid://crqpnguf7n7ac"
+path.s3tc="res://.godot/imported/model_0.png-b92ea649a49435131c22225e8b8d3dcc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "027556218e993f8f5faac004ef873258"
+}
 
 [deps]
 
-source_file="res://assets/blockBenchFiles/textures/Tv_texture.png"
-dest_files=["res://.godot/imported/Tv_texture.png-888e4a7172e9b81bceba2525f20adcbb.s3tc.ctex"]
+source_file="res://assets/models/flashlight/source/model_0.png"
+dest_files=["res://.godot/imported/model_0.png-b92ea649a49435131c22225e8b8d3dcc.s3tc.ctex"]
 
 [params]
 

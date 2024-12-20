@@ -37,15 +37,16 @@ albedo_texture = ExtResource("12_8hgg5")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kaqlf"]
 albedo_texture = ExtResource("15_54ege")
 
-[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_am4lk"]
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_rr58m"]
 night_sky = ExtResource("6_uu8qv")
 
-[sub_resource type="Sky" id="Sky_ruud6"]
-sky_material = SubResource("PhysicalSkyMaterial_am4lk")
+[sub_resource type="Sky" id="Sky_bp2v3"]
+sky_material = SubResource("PhysicalSkyMaterial_rr58m")
 
-[sub_resource type="Environment" id="Environment_8gv3t"]
+[sub_resource type="Environment" id="Environment_rc6ri"]
 background_mode = 2
-sky = SubResource("Sky_ruud6")
+background_energy_multiplier = 0.0
+sky = SubResource("Sky_bp2v3")
 ambient_light_color = Color(0.129558, 0.129558, 0.129558, 1)
 ambient_light_sky_contribution = 0.0
 
@@ -278,7 +279,7 @@ spot_range = 8.0
 spot_angle = 23.55
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_8gv3t")
+environment = SubResource("Environment_rc6ri")
 
 [node name="blockbench_export" parent="." instance=ExtResource("19_wvtou")]
 transform = Transform3D(0.240456, 0, -0.438384, 0, 0.5, 0, 0.438384, 0, 0.240456, 2.35109, 1.33096, 2.30323)

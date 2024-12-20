@@ -63,7 +63,8 @@ func change_normalized_Rotation(value:float) -> void:
 	ligths_of_globe.rotation_degrees.y = rotation_to_degres(rotation_normalize)   # Rotate 90 degrees per second
 	globe_material.set("shader_parameter/heightmap_translation", Vector2(-rotation_normalize,0))
 	
-func interact():
+func interact(caller):
+	player = caller
 	locked = !locked
 	player.lock()
 	

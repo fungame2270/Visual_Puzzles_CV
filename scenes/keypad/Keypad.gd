@@ -3,7 +3,7 @@ extends Node3D
 var locked = false
 var disabled = false
 @onready var password_label: Label = $PasswordViewport/PasswordLabel
-@onready var player: CharacterBody3D = $"../Player"
+var player: CharacterBody3D 
 @export var answer: String
 @export var door : StaticBody3D
 
@@ -34,7 +34,8 @@ func _input(event):
 		if key_pressed == "Backspace":
 			password_label.text = ""
 
-func interact():
+func interact(caller):
+	player = caller
 	if not disabled:
 		if locked:
 			locked = false
