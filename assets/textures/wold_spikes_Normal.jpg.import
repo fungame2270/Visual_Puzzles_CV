@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnpstoe6rffvr"
-path.s3tc="res://.godot/imported/wold_Normal_Bump.jpg-5ac99149cad85cad435590d1d70c741e.s3tc.ctex"
+uid="uid://cfcdwjygx4460"
+path.s3tc="res://.godot/imported/wold_spikes_Normal.jpg-873e432cc4d9adb66d1d44c8c8d489cf.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/wold_Normal_Bump.jpg"
-dest_files=["res://.godot/imported/wold_Normal_Bump.jpg-5ac99149cad85cad435590d1d70c741e.s3tc.ctex"]
+source_file="res://assets/textures/wold_spikes_Normal.jpg"
+dest_files=["res://.godot/imported/wold_spikes_Normal.jpg-873e432cc4d9adb66d1d44c8c8d489cf.s3tc.ctex"]
 
 [params]
 
@@ -24,7 +24,7 @@ compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=7
+roughness/mode=1
 roughness/src_normal="res://assets/textures/wold_spikes_Normal.jpg"
 process/fix_alpha_border=true
 process/premult_alpha=false
