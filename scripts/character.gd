@@ -8,11 +8,24 @@ var locked = false
 var owns_flashlight = false
 @onready var ray_cast_3d: RayCast3D = $Camera3D/RayCast3D
 @onready var flashlight: SpotLight3D = $Camera3D/SpotLight3D
+@onready var interact_label: Label = $Label
+@onready var flashlight_label: Label = $Label2
+@onready var tv_label: Label = $Label3
 
 func toggle_flashlight():
 	flashlight.visible = false if flashlight.visible else true
+	if flashlight_label.visible: flashlight_label.visible = false 
 	if not owns_flashlight:
 		owns_flashlight = true
+
+func set_label(text):
+	interact_label.text = text
+
+func toggle_flashlight_label():
+	flashlight_label.visible = false if flashlight_label.visible else true
+
+func toggle_tv_label():
+	tv_label.visible = false if tv_label.visible else true
 
 func lock():
 	if locked:
@@ -34,12 +47,16 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	
-	if Input.is_action_just_pressed("interact"):
-		if ray_cast_3d.is_colliding():
+		
+	if ray_cast_3d.is_colliding():
+		if Input.is_action_just_pressed("interact"):
 			var collision = ray_cast_3d.get_collider()
 			collision.interact(self)
-
+		if interact_label.visible == false:
+			interact_label.visible = true
+	elif interact_label.visible:
+		interact_label.visible = false
+	
 	if Input.is_action_just_pressed("flashlight") and owns_flashlight:
 		toggle_flashlight()
 
