@@ -23,3 +23,52 @@ collision_mask = 2
 visible = false
 spot_range = 100.0
 spot_angle = 20.0
+
+[node name="Label" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 369.0
+offset_top = -8.5
+offset_right = 509.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press E to interact"
+
+[node name="Label2" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 369.5
+offset_top = 21.5
+offset_right = 572.5
+offset_bottom = 44.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press F to toggle flashlight"
+
+[node name="Label3" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 367.0
+offset_top = -178.0
+offset_right = 654.0
+offset_bottom = -51.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press A and D to rotate the TV
+Press J to change camera prespective
+Press K to select the Near Plane
+press L to select the Far Plane
+Use scrool wheel to move the plane"

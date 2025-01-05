@@ -25,8 +25,10 @@ func _ready() -> void:
 func interact(caller):
 	if not locked:
 		locked = true
+		caller.toggle_tv_label()
 	else:
 		locked = false
+		caller.toggle_tv_label()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
