@@ -1,6 +1,5 @@
 extends Node3D
 
-@onready var player: CharacterBody3D = $"../../Player"
 @onready var ligths_of_globe: Node3D = $Node3D/Pivot
 @onready var globe_material: ShaderMaterial = load("res://scenes/globeScene.tscn::ShaderMaterial_5bwqa")
 @onready var lights: Array[SpotLight3D] = [$Node3D/Pivot/Ligths/Portugal,$Node3D/Pivot/Ligths/Franca,
@@ -64,7 +63,5 @@ func change_normalized_Rotation(value:float) -> void:
 	globe_material.set("shader_parameter/heightmap_translation", Vector2(-rotation_normalize,0))
 	
 func interact(caller):
-	player = caller
+	caller.lock()
 	locked = !locked
-	player.lock()
-	

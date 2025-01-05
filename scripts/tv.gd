@@ -1,7 +1,7 @@
 extends StaticBody3D
 
 @onready var camera_3d: Camera3D = $"../OutsideCameraViewport/Camera3D"
-@onready var player: CharacterBody3D = $"../Player"
+var player: CharacterBody3D
 @onready var blockbench_export: Node3D = $blockbench_export
 @onready var center: Node3D = $center
 @onready var camera_feed: Sprite3D = $CameraFeed2
@@ -28,6 +28,11 @@ func _ready() -> void:
 	frustum_min = camera_3d.near
 
 func interact(caller):
+	if not player:
+		player = caller
+	
+	caller.lock()
+	
 	if not locked:
 		locked = true
 		caller.toggle_tv_label()
