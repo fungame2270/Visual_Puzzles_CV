@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://k50unyae2crp"]
+[gd_scene load_steps=20 format=3 uid="uid://k50unyae2crp"]
 
 [ext_resource type="PackedScene" uid="uid://dpys1nsf1saos" path="res://scenes/character.tscn" id="1_qgfbw"]
 [ext_resource type="PackedScene" uid="uid://cwlseuvlswo8h" path="res://scenes/wall.tscn" id="4_ie4en"]
@@ -22,6 +22,8 @@ uv1_scale = Vector3(1.4, 1.4, 1.4)
 uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ut8u8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hrygg"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_am4lk"]
 night_sky = ExtResource("16_ios6p")
@@ -65,12 +67,6 @@ transform = Transform3D(6, 0, 0, 0, -2.62268e-07, -6, 0, 6, -2.62268e-07, 0, 3.5
 [node name="MeshInstance3D" parent="room/roof" index="1"]
 surface_material_override/0 = ExtResource("8_p6pfl")
 
-[node name="wall" parent="room" instance=ExtResource("4_ie4en")]
-transform = Transform3D(6, 0, 0, 0, 3.5, 0, 0, 0, 6, 0, 1.75, -3)
-
-[node name="MeshInstance3D" parent="room/wall" index="1"]
-surface_material_override/0 = ExtResource("8_p6pfl")
-
 [node name="wall2" parent="room" instance=ExtResource("4_ie4en")]
 transform = Transform3D(6, 0, 0, 0, -3.5, 9.05975e-07, 0, -5.28485e-07, -6, 0, 1.75, 3)
 
@@ -91,6 +87,30 @@ transform = Transform3D(-2.62268e-07, 0, 6, 0, 3.5, 0, -6, 0, -2.62268e-07, -3, 
 [node name="MeshInstance3D" parent="room/wall4" index="1"]
 material_override = ExtResource("8_p6pfl")
 surface_material_override/0 = SubResource("StandardMaterial3D_ut8u8")
+
+[node name="door_wall" type="Node3D" parent="room"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="wall3" parent="room/door_wall" instance=ExtResource("4_ie4en")]
+transform = Transform3D(-1.00536e-07, 0, -6, 0, 3.5, 0, 2.3, 0, -2.62268e-07, 3, 1.75, -1.85)
+
+[node name="MeshInstance3D" parent="room/door_wall/wall3" index="1"]
+material_override = ExtResource("8_p6pfl")
+surface_material_override/0 = SubResource("StandardMaterial3D_hrygg")
+
+[node name="wall5" parent="room/door_wall" instance=ExtResource("4_ie4en")]
+transform = Transform3D(-1.00536e-07, 0, -6, 0, 3.5, 0, 2.3, 0, -2.62268e-07, 3, 1.75, 1.85)
+
+[node name="MeshInstance3D" parent="room/door_wall/wall5" index="1"]
+material_override = ExtResource("8_p6pfl")
+surface_material_override/0 = SubResource("StandardMaterial3D_hrygg")
+
+[node name="wall6" parent="room/door_wall" instance=ExtResource("4_ie4en")]
+transform = Transform3D(-6.11959e-08, 0, -6, 0, 1, 0, 1.4, 0, -2.62268e-07, 3, 3, 0)
+
+[node name="MeshInstance3D" parent="room/door_wall/wall6" index="1"]
+material_override = ExtResource("8_p6pfl")
+surface_material_override/0 = SubResource("StandardMaterial3D_hrygg")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.00532591, 3.51993, 0.0531332)
@@ -142,8 +162,10 @@ mesh = SubResource("PlaneMesh_kjnfl")
 
 [editable path="room/floor"]
 [editable path="room/roof"]
-[editable path="room/wall"]
 [editable path="room/wall2"]
 [editable path="room/wall3"]
 [editable path="room/wall4"]
+[editable path="room/door_wall/wall3"]
+[editable path="room/door_wall/wall5"]
+[editable path="room/door_wall/wall6"]
 [editable path="Table/table"]
