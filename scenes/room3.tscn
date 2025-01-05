@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://k50unyae2crp"]
+[gd_scene load_steps=32 format=3 uid="uid://k50unyae2crp"]
 
 [ext_resource type="PackedScene" uid="uid://dpys1nsf1saos" path="res://scenes/character.tscn" id="1_qgfbw"]
 [ext_resource type="PackedScene" uid="uid://cwlseuvlswo8h" path="res://scenes/wall.tscn" id="4_ie4en"]
@@ -365,7 +365,7 @@ sprite_frames = SubResource("SpriteFrames_do5w0")
 frame = 5
 
 [node name="AnimatedSprite3D21" type="AnimatedSprite3D" parent="RandomNumbers"]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.316335, 2.27159, -2.99875)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.990598, 2.27159, -2.99875)
 sprite_frames = SubResource("SpriteFrames_do5w0")
 
 [node name="AnimatedSprite3D22" type="AnimatedSprite3D" parent="RandomNumbers"]
