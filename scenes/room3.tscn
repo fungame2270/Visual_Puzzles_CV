@@ -1,6 +1,5 @@
-[gd_scene load_steps=32 format=3 uid="uid://k50unyae2crp"]
+[gd_scene load_steps=31 format=3 uid="uid://k50unyae2crp"]
 
-[ext_resource type="PackedScene" uid="uid://dpys1nsf1saos" path="res://scenes/character.tscn" id="1_qgfbw"]
 [ext_resource type="PackedScene" uid="uid://cwlseuvlswo8h" path="res://scenes/wall.tscn" id="4_ie4en"]
 [ext_resource type="Texture2D" uid="uid://ilovypkvnu3e" path="res://assets/Planks037A_2K-JPG/Planks037A_2K-JPG_Color.jpg" id="5_7dn6c"]
 [ext_resource type="Texture2D" uid="uid://dnynb4ar3hgb2" path="res://assets/Planks037A_2K-JPG/Planks037A_2K-JPG_Metalness.jpg" id="6_py5yw"]
@@ -124,9 +123,6 @@ animations = [{
 }]
 
 [node name="Node3D" type="Node3D"]
-
-[node name="Player" parent="." instance=ExtResource("1_qgfbw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.304037, 1.87138)
 
 [node name="room" type="Node3D" parent="."]
 

@@ -1,15 +1,14 @@
-[gd_scene load_steps=30 format=3 uid="uid://crldwarg4bk7o"]
+[gd_scene load_steps=32 format=3 uid="uid://crldwarg4bk7o"]
 
-[ext_resource type="PackedScene" uid="uid://dpys1nsf1saos" path="res://scenes/character.tscn" id="1_s1m4l"]
 [ext_resource type="PackedScene" uid="uid://bg1rwfvcw5qsq" path="res://scenes/tv.tscn" id="2_w0wtq"]
 [ext_resource type="Script" path="res://scripts/tv.gd" id="3_1lkmw"]
 [ext_resource type="Shader" path="res://assets/shaders/tv.gdshader" id="4_e60yb"]
 [ext_resource type="Material" uid="uid://bhmjeu3tqc4ie" path="res://assets/materials/wall.tres" id="5_nto02"]
-[ext_resource type="Material" path="res://assets/materials/floor.tres" id="5_p27p8"]
+[ext_resource type="Material" uid="uid://dxav3q4qei1c3" path="res://assets/materials/floor.tres" id="5_p27p8"]
 [ext_resource type="PackedScene" uid="uid://cwlseuvlswo8h" path="res://scenes/wall.tscn" id="5_wbnhc"]
 [ext_resource type="Texture2D" uid="uid://dxha6q4qoomel" path="res://assets/sky.jpg" id="6_uu8qv"]
 [ext_resource type="PackedScene" uid="uid://dnnkja0yjv0p7" path="res://assets/models/Bottom_furniture.gltf" id="9_4wvrg"]
-[ext_resource type="PackedScene" path="res://scenes/door.tscn" id="9_bw7l6"]
+[ext_resource type="PackedScene" uid="uid://cgmst0j6rhce6" path="res://scenes/door.tscn" id="9_bw7l6"]
 [ext_resource type="PackedScene" uid="uid://386ha7wri7pn" path="res://scenes/furniture.tscn" id="9_cwdgy"]
 [ext_resource type="PackedScene" uid="uid://b1mxxnel6k7h" path="res://assets/models/Book.gltf" id="10_kk3cr"]
 [ext_resource type="Texture2D" uid="uid://byhs6smrltl6o" path="res://assets/models/textures/bookTexture3_hidden.png" id="11_nrpqb"]
@@ -67,9 +66,6 @@ ambient_light_color = Color(0.129558, 0.129558, 0.129558, 1)
 ambient_light_sky_contribution = 0.0
 
 [node name="room1" type="Node3D"]
-
-[node name="Player" parent="." instance=ExtResource("1_s1m4l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.304037, 1.87138)
 
 [node name="OutsideCameraViewport" type="SubViewport" parent="."]
 size = Vector2i(1920, 1080)
@@ -305,7 +301,8 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.738601, 1.32923, -1.8
 transform = Transform3D(0.197657, 0, 0.980271, 0, 1, 0, -0.980271, 0, 0.197657, -2.36984, 1.0732, 0.258097)
 
 [node name="Keypad" parent="." node_paths=PackedStringArray("door") instance=ExtResource("20_i5si7")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.96458, 1.79265, 0.977885)
+transform = Transform3D(-0.0422245, 0, 0.999108, 0, 1, 0, -0.999108, 0, -0.0422245, 2.96458, 1.79265, 0.977885)
+answer = "243"
 door = NodePath("../room/door_wall/door")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
