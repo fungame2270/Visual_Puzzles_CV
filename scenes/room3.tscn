@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://k50unyae2crp"]
+[gd_scene load_steps=32 format=3 uid="uid://k50unyae2crp"]
 
 [ext_resource type="PackedScene" uid="uid://dpys1nsf1saos" path="res://scenes/character.tscn" id="1_qgfbw"]
 [ext_resource type="PackedScene" uid="uid://cwlseuvlswo8h" path="res://scenes/wall.tscn" id="4_ie4en"]
@@ -9,6 +9,8 @@
 [ext_resource type="Material" uid="uid://bhmjeu3tqc4ie" path="res://assets/materials/wall.tres" id="8_p6pfl"]
 [ext_resource type="PackedScene" uid="uid://bvelcl7ljp0en" path="res://scenes/globeScene.tscn" id="9_unirn"]
 [ext_resource type="Texture2D" uid="uid://bue0c1sccxvad" path="res://assets/textures/wold_pinned.jpg" id="10_aly16"]
+[ext_resource type="Texture2D" uid="uid://cwbyihbu8fc2g" path="res://assets/textures/numbers/numbers.png" id="11_2at1f"]
+[ext_resource type="Texture2D" uid="uid://vpyejji7r4d" path="res://assets/textures/numbers/1.png" id="11_huuef"]
 [ext_resource type="Texture2D" uid="uid://dxha6q4qoomel" path="res://assets/sky.jpg" id="16_ios6p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vnqp7"]
@@ -46,6 +48,80 @@ albedo_texture = ExtResource("10_aly16")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kjnfl"]
 material = SubResource("StandardMaterial3D_ra3ht")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_454lh"]
+atlas = ExtResource("11_2at1f")
+region = Rect2(186, 103, 42, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0mru"]
+atlas = ExtResource("11_2at1f")
+region = Rect2(50, 27, 46, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vancy"]
+atlas = ExtResource("11_2at1f")
+region = Rect2(96, 27, 46, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7iyf"]
+atlas = ExtResource("11_2at1f")
+region = Rect2(144, 27, 42, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8n3mx"]
+atlas = ExtResource("11_2at1f")
+region = Rect2(186, 27, 42, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eso4v"]
+atlas = ExtResource("11_2at1f")
+region = Rect2(18, 103, 42, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujdml"]
+atlas = ExtResource("11_2at1f")
+region = Rect2(60, 103, 42, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dadkk"]
+atlas = ExtResource("11_2at1f")
+region = Rect2(102, 103, 42, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e36kh"]
+atlas = ExtResource("11_2at1f")
+region = Rect2(144, 103, 42, 76)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_do5w0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_454lh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_huuef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0mru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vancy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7iyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8n3mx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eso4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujdml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dadkk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e36kh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Node3D" type="Node3D"]
 
@@ -159,6 +235,207 @@ transform = Transform3D(-1.6196, 1.42389e-07, -6.22402e-15, 0, -4.12198e-08, -0.
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Map"]
 mesh = SubResource("PlaneMesh_kjnfl")
+
+[node name="Code" type="Node3D" parent="."]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Code"]
+transform = Transform3D(-6.55671e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.55671e-09, -2.99974, 2.665, 0.659)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 1
+
+[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="Code"]
+transform = Transform3D(-6.55671e-09, 0.15, -6.55671e-09, 0, -6.55671e-09, -0.15, -0.15, -6.55671e-09, 2.86603e-16, -2.31442, 3.49986, 1.27624)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 5
+
+[node name="AnimatedSprite3D3" type="AnimatedSprite3D" parent="Code"]
+transform = Transform3D(-6.55671e-09, 0.15, -6.55671e-09, 0, -6.55671e-09, -0.15, -0.15, -6.55671e-09, 2.86603e-16, -1.57556, 3.49986, -2.08933)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 7
+
+[node name="AnimatedSprite3D4" type="AnimatedSprite3D" parent="Code"]
+transform = Transform3D(-6.55671e-09, 0.15, -6.55671e-09, 0, -6.55671e-09, -0.15, -0.15, -6.55671e-09, 2.86603e-16, 1.05938, 3.49986, 1.49474)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 2
+
+[node name="AnimatedSprite3D5" type="AnimatedSprite3D" parent="Code"]
+transform = Transform3D(-6.55671e-09, 0.15, -6.55671e-09, 0, -6.55671e-09, -0.15, -0.15, -6.55671e-09, 2.86603e-16, 2.45714, 3.49986, -2.67519)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 4
+
+[node name="RandomNumbers" type="Node3D" parent="."]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(-6.55671e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.55671e-09, -2.99974, 1.85924, 2.52276)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 5
+
+[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(-6.55671e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.55671e-09, -2.99974, 1.9753, -2.13016)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 5
+
+[node name="AnimatedSprite3D3" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(-6.55671e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.55671e-09, -2.99974, 2.03377, -0.00334811)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 6
+
+[node name="AnimatedSprite3D4" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(-6.55671e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.55671e-09, -2.99974, 2.94661, -0.0784967)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 6
+
+[node name="AnimatedSprite3D5" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(-6.55671e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.55671e-09, -2.99974, 2.86695, 1.85972)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+
+[node name="AnimatedSprite3D6" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(-6.55671e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.55671e-09, -2.99974, 2.5529, -1.30975)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 7
+
+[node name="AnimatedSprite3D7" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(-6.55671e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.55671e-09, -2.99974, 3.22193, 0.659)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 5
+
+[node name="AnimatedSprite3D8" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(-6.55671e-09, 0.15, -6.55671e-09, 0, -6.55671e-09, -0.15, -0.15, -6.55671e-09, 2.86603e-16, -2.4762, 3.49986, 1.10052)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 2
+
+[node name="AnimatedSprite3D9" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(-6.55671e-09, 0.15, -6.55671e-09, 0, -6.55671e-09, -0.15, -0.15, -6.55671e-09, 2.86603e-16, 1.48973, 3.49986, -1.44946)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 8
+
+[node name="AnimatedSprite3D10" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(-6.55671e-09, 0.15, -6.55671e-09, 0, -6.55671e-09, -0.15, -0.15, -6.55671e-09, 2.86603e-16, 1.45644, 3.49986, -0.37114)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 2
+
+[node name="AnimatedSprite3D11" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(-6.55671e-09, 0.15, -6.55671e-09, 0, -6.55671e-09, -0.15, -0.15, -6.55671e-09, 2.86603e-16, 0.862512, 3.49986, -1.90132)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 4
+
+[node name="AnimatedSprite3D12" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(-6.55671e-09, 0.15, -6.55671e-09, 0, -6.55671e-09, -0.15, -0.15, -6.55671e-09, 2.86603e-16, 2.17423, 3.49986, 1.01277)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 6
+
+[node name="AnimatedSprite3D13" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(-6.55671e-09, 0.15, -6.55671e-09, 0, -6.55671e-09, -0.15, -0.15, -6.55671e-09, 2.86603e-16, -0.755403, 3.49986, 1.62772)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 9
+
+[node name="AnimatedSprite3D14" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(-6.55671e-09, 0.15, -6.55671e-09, 0, -6.55671e-09, -0.15, -0.15, -6.55671e-09, 2.86603e-16, -0.857863, 3.49986, -1.53848)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 8
+
+[node name="AnimatedSprite3D15" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(-6.55671e-09, 0.15, -6.55671e-09, 0, -6.55671e-09, -0.15, -0.15, -6.55671e-09, 2.86603e-16, -0.479647, 3.49986, 0.89579)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 7
+
+[node name="AnimatedSprite3D16" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -2.29511, 2.27159, -2.99875)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 4
+
+[node name="AnimatedSprite3D17" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -1.08966, 2.6365, -2.99875)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 4
+
+[node name="AnimatedSprite3D18" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -1.0042, 1.16406, -2.99875)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 3
+
+[node name="AnimatedSprite3D19" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -1.18381, 1.92318, -2.99875)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 6
+
+[node name="AnimatedSprite3D20" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -1.82381, 2.97241, -2.99875)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 5
+
+[node name="AnimatedSprite3D21" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.990598, 2.27159, -2.99875)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+
+[node name="AnimatedSprite3D22" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 2.41443, 2.99469, -2.99875)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 6
+
+[node name="AnimatedSprite3D23" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 1.54069, 2.79908, -2.99875)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 6
+
+[node name="AnimatedSprite3D24" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.483055, 2.84858, -2.99875)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 2
+
+[node name="AnimatedSprite3D25" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.321293, 3.00779, -2.99875)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 7
+
+[node name="AnimatedSprite3D26" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 2.22883, 2.27159, -2.99875)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 6
+
+[node name="AnimatedSprite3D27" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(-6.55671e-09, 0, -0.15, 0, 0.15, 0, 0.15, 0, -6.55671e-09, 2.99836, 2.27159, -0.726013)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 4
+
+[node name="AnimatedSprite3D28" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(-6.55671e-09, 0, -0.15, 0, 0.15, 0, 0.15, 0, -6.55671e-09, 2.99836, 3.16749, 1.3673)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 6
+
+[node name="AnimatedSprite3D29" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(-6.55671e-09, 0, -0.15, 0, 0.15, 0, 0.15, 0, -6.55671e-09, 2.99514, 3.03881, 0.0427726)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 7
+
+[node name="AnimatedSprite3D30" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(-6.55671e-09, 0, -0.15, 0, 0.15, 0, 0.15, 0, -6.55671e-09, 2.99836, 2.75902, -2.17248)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 2
+
+[node name="AnimatedSprite3D31" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(-6.55671e-09, 0, -0.15, 0, 0.15, 0, 0.15, 0, -6.55671e-09, 2.99836, 3.13735, -1.21355)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 1
+
+[node name="AnimatedSprite3D32" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(-6.55671e-09, 0, -0.15, 0, 0.15, 0, 0.15, 0, -6.55671e-09, 2.99586, 2.30326, 1.15148)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 6
+
+[node name="AnimatedSprite3D33" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(-6.55671e-09, 0, -0.15, 0, 0.15, 0, 0.15, 0, -6.55671e-09, 2.99836, 1.76737, 2.08722)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 9
+
+[node name="AnimatedSprite3D34" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(-6.55671e-09, 0, -0.15, 0, 0.15, 0, 0.15, 0, -6.55671e-09, 2.99836, 2.87959, 2.51154)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+
+[node name="AnimatedSprite3D35" type="AnimatedSprite3D" parent="RandomNumbers"]
+transform = Transform3D(-6.55671e-09, 0, -0.15, 0, 0.15, 0, 0.15, 0, -6.55671e-09, 2.9987, 3.20549, -0.726013)
+sprite_frames = SubResource("SpriteFrames_do5w0")
+frame = 8
 
 [editable path="room/floor"]
 [editable path="room/roof"]
