@@ -64,4 +64,5 @@ func change_normalized_Rotation(value:float) -> void:
 	
 func interact(caller):
 	caller.lock()
+	caller.toggle_globe_label()
 	locked = !locked

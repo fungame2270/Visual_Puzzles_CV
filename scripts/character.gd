@@ -11,6 +11,7 @@ var owns_flashlight = false
 @onready var interact_label: Label = $Label
 @onready var flashlight_label: Label = $Label2
 @onready var tv_label: Label = $Label3
+@onready var globe_label: Label = $Label4
 
 func toggle_flashlight():
 	flashlight.visible = false if flashlight.visible else true
@@ -26,6 +27,9 @@ func toggle_flashlight_label():
 
 func toggle_tv_label():
 	tv_label.visible = false if tv_label.visible else true
+
+func toggle_globe_label():
+	globe_label.visible = false if globe_label.visible else true
 
 func lock():
 	if locked:

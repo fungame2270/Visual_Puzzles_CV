@@ -73,3 +73,19 @@ Press J to change camera prespective
 Press K to select the Near Plane
 press L to select the Far Plane
 Use scrool wheel to move the plane"
+
+[node name="Label4" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 367.0
+offset_top = -178.0
+offset_right = 654.0
+offset_bottom = -51.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press SPACE to change aspect
+Press A and D to rotate"

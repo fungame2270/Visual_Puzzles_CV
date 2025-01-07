@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://k50unyae2crp"]
+[gd_scene load_steps=32 format=3 uid="uid://k50unyae2crp"]
 
 [ext_resource type="PackedScene" uid="uid://cwlseuvlswo8h" path="res://scenes/wall.tscn" id="4_ie4en"]
 [ext_resource type="Texture2D" uid="uid://ilovypkvnu3e" path="res://assets/Planks037A_2K-JPG/Planks037A_2K-JPG_Color.jpg" id="5_7dn6c"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bue0c1sccxvad" path="res://assets/textures/wold_pinned.jpg" id="10_aly16"]
 [ext_resource type="Texture2D" uid="uid://cwbyihbu8fc2g" path="res://assets/textures/numbers/numbers.png" id="11_2at1f"]
 [ext_resource type="Texture2D" uid="uid://vpyejji7r4d" path="res://assets/textures/numbers/1.png" id="11_huuef"]
+[ext_resource type="PackedScene" uid="uid://byvtflp3se33l" path="res://scenes/keypad/KeypadBig.tscn" id="12_78v7m"]
 [ext_resource type="Texture2D" uid="uid://dxha6q4qoomel" path="res://assets/sky.jpg" id="16_ios6p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vnqp7"]
@@ -432,6 +433,10 @@ sprite_frames = SubResource("SpriteFrames_do5w0")
 transform = Transform3D(-6.55671e-09, 0, -0.15, 0, 0.15, 0, 0.15, 0, -6.55671e-09, 2.9987, 3.20549, -0.726013)
 sprite_frames = SubResource("SpriteFrames_do5w0")
 frame = 8
+
+[node name="Keypad" parent="." instance=ExtResource("12_78v7m")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.96864, 1.83502, 0.118947)
+answer = "12345"
 
 [editable path="room/floor"]
 [editable path="room/roof"]
