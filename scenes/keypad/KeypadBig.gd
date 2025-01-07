@@ -22,7 +22,7 @@ func update_label(value):
 			locked = false
 			disabled = true
 			player.lock()
-			door.open()
+			get_tree().quit()
 		
 
 func _input(event):
