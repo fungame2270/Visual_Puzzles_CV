@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://byvtflp3se33l"]
+
+[ext_resource type="Script" path="res://scenes/keypad/KeypadBig.gd" id="1_feqxm"]
+
+[sub_resource type="BoxMesh" id="1"]
+size = Vector3(0.35, 0.2, 0.02)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ayymo"]
+albedo_color = Color(0.442911, 0.442911, 0.442911, 1)
+
+[sub_resource type="StyleBoxFlat" id="3"]
+bg_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+
+[sub_resource type="ViewportTexture" id="4"]
+viewport_path = NodePath("PasswordViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r44o1"]
+size = Vector3(0.352417, 0.20459, 0.0522461)
+
+[node name="Keypad" type="StaticBody3D"]
+collision_layer = 3
+script = ExtResource("1_feqxm")
+answer = "123"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.014)
+mesh = SubResource("1")
+surface_material_override/0 = SubResource("StandardMaterial3D_ayymo")
+
+[node name="PasswordViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(42, 19)
+
+[node name="Panel" type="Panel" parent="PasswordViewport"]
+offset_right = 60.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("3")
+
+[node name="PasswordLabel" type="Label" parent="PasswordViewport"]
+custom_minimum_size = Vector2(36, 19)
+offset_right = 37.0
+offset_bottom = 23.0
+scale = Vector2(0.9, 0.9)
+text = "12345"
+vertical_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-0.5, -7.54979e-08, 0, 7.54979e-08, -0.5, 0, 0, 0, 0.5, 0, 0, 0.002)
+flip_v = true
+texture = SubResource("4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000427246, -0.00219727, 0.0158691)
+shape = SubResource("BoxShape3D_r44o1")
