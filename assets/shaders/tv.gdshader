@@ -1,3 +1,6 @@
+// Adapted from GoldBon's VHS Glitch shader
+// https://godotshaders.com/shader/vhs-glitch/
+
 shader_type spatial;
 render_mode unshaded;
 uniform sampler2D screen_texture;
